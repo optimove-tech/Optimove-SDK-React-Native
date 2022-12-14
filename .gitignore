@@ -45,7 +45,6 @@ project.xcworkspace
 local.properties
 android.iml
 *.iml
-/android/*
 !/android/README.md
 
 # Cocoapods
