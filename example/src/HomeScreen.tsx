@@ -119,8 +119,8 @@ export function HomeScreen({ navigation }: { navigation: any }) {
           <Separator />
           <Button
             onPress={() =>
-              Optimove.reportEvent(
-                eventText, {"string_param": "some_param"})}
+              Optimove.reportEvent(eventText, { string_param: 'some_param' })
+            }
             title="Report event with string_param: some_param"
             color="#FF8566"
           />
@@ -137,14 +137,17 @@ export function HomeScreen({ navigation }: { navigation: any }) {
           <Separator />
           <TextInput
             style={styles.input}
-            onChangeText={onChangeScreenCategoryText} 
+            onChangeText={onChangeScreenCategoryText}
             value={screenCategoryText}
             placeholder="Screen category (Optional)"
           />
           <Separator />
           <Button
             onPress={() =>
-              Optimove.reportScreenVisit(screenTitleText, screenCategoryText !== "" ? screenCategoryText : undefined)
+              Optimove.reportScreenVisit(
+                screenTitleText,
+                screenCategoryText !== '' ? screenCategoryText : undefined
+              )
             }
             title="Report screen visit"
             color="#FF8566"

@@ -3,17 +3,17 @@ import type { DeepLink } from './ddl';
 import type { InAppButtonPress } from './inApp';
 
 export interface PushNotificationHandler {
-    (notification: PushNotification): void;
+  (notification: PushNotification): void;
 }
 
 export interface InAppDeepLinkHandler {
-    (data: InAppButtonPress): void;
+  (data: InAppButtonPress): void;
 }
 
 export interface InAppInboxUpdatedHandler {
-    (): void;
+  (): void;
 }
 
 export interface DeepLinkHandler {
-    (deepLink: DeepLink): void;
+  (deepLink: DeepLink): void;
 }

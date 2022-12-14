@@ -8,7 +8,6 @@ import { InboxScreen } from './InboxScreen';
 
 const Stack = createNativeStackNavigator();
 
-
 function App() {
   initListeners();
 

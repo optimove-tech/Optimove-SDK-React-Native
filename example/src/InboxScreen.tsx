@@ -10,7 +10,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import {ExpandableListView} from 'react-native-expandable-listview';
+import { ExpandableListView } from 'react-native-expandable-listview';
 import type { InAppInboxItem, InAppInboxSummary } from 'src/inApp';
 
 export function InboxScreen({ navigation }: { navigation: any }) {
@@ -51,90 +51,100 @@ export function InboxScreen({ navigation }: { navigation: any }) {
     >
       <View style={{ flex: 1 }}>
         <ExpandableListView
-        innerItemContainerStyle={{padding: 8}}
-        itemContainerStyle={styles.container}
-            data={inboxItems.map(inboxItem => {
+          innerItemContainerStyle={{ padding: 8 }}
+          itemContainerStyle={styles.container}
+          data={inboxItems.map((inboxItem) => {
             return {
               id: inboxItem.id.toString(),
               categoryName: inboxItem.title,
               customItem: (
                 <View style={styles.row}>
-                <View style={styles.column}>
-                    <Text style={styles.titleText}>Title: {inboxItem.title}</Text>
-                    <Text style={styles.caption}>Subtitle: {inboxItem.subtitle}</Text>
+                  <View style={styles.column}>
+                    <Text style={styles.titleText}>
+                      Title: {inboxItem.title}
+                    </Text>
+                    <Text style={styles.caption}>
+                      Subtitle: {inboxItem.subtitle}
+                    </Text>
+                  </View>
+                  {inboxItem.imageUrl && (
+                    <Image
+                      style={styles.image}
+                      source={{
+                        uri: inboxItem.imageUrl,
+                      }}
+                    />
+                  )}
                 </View>
-                { inboxItem.imageUrl &&
-                                <Image
-                                style={styles.image}
-                                source= {{
-                                  uri: inboxItem.imageUrl,
-                                }}
-                              />
-                               }
-                </View>
-
-
-               
               ),
               subCategory: [
                 {
                   customInnerItem: (
                     <Button
-                        onPress={() =>
-                          Alert.alert('Inbox data', JSON.stringify(inboxItem.data), [
-                            { text: 'OK', style: 'cancel' },
-                          ])
-                        }
-                        title="View data"
-                        color="#FF8566"
-                      />
+                      onPress={() =>
+                        Alert.alert(
+                          'Inbox data',
+                          JSON.stringify(inboxItem.data),
+                          [{ text: 'OK', style: 'cancel' }]
+                        )
+                      }
+                      title="View data"
+                      color="#FF8566"
+                    />
                   ),
                   id: '1',
                   name: '',
                 },
-                {id: '2', 
-                name: 'Sub Item 2', 
-                customInnerItem:             
-                <Button
-                onPress={() => {
-                  Optimove.inAppPresentInboxMessage(inboxItem);
-                }}
-              title="View"
-              color="#FF8566"
-            />
-                              },
+                {
+                  id: '2',
+                  name: 'Sub Item 2',
+                  customInnerItem: (
+                    <Button
+                      onPress={() => {
+                        Optimove.inAppPresentInboxMessage(inboxItem);
+                      }}
+                      title="View"
+                      color="#FF8566"
+                    />
+                  ),
+                },
 
-            {id: '3', 
-            name: 'Sub Item 3', 
-            customInnerItem:       
-            <Button
-            onPress={() => {
-              Optimove.inAppMarkAsRead(inboxItem);
-              Optimove.inAppGetInboxSummary().then(setInAppInboxSummary);
-            }}
-          title="Mark read"
-          color="#FF8566"
-        />
-      },
+                {
+                  id: '3',
+                  name: 'Sub Item 3',
+                  customInnerItem: (
+                    <Button
+                      onPress={() => {
+                        Optimove.inAppMarkAsRead(inboxItem);
+                        Optimove.inAppGetInboxSummary().then(
+                          setInAppInboxSummary
+                        );
+                      }}
+                      title="Mark read"
+                      color="#FF8566"
+                    />
+                  ),
+                },
 
-
-        {id: '4', 
-        name: 'Sub Item 4', 
-        customInnerItem:       
-        <Button
-        onPress={() => {
-          Optimove.inAppDeleteMessageFromInbox(inboxItem);
-          Optimove.inAppGetInboxSummary().then(setInAppInboxSummary);
-        }}
-      title="Delete"
-      color="#FF8566"
-    />
-}
-
+                {
+                  id: '4',
+                  name: 'Sub Item 4',
+                  customInnerItem: (
+                    <Button
+                      onPress={() => {
+                        Optimove.inAppDeleteMessageFromInbox(inboxItem);
+                        Optimove.inAppGetInboxSummary().then(
+                          setInAppInboxSummary
+                        );
+                      }}
+                      title="Delete"
+                      color="#FF8566"
+                    />
+                  ),
+                },
               ],
-            }
+            };
           })}
-
         />
       </View>
       <View style={styles.footer}>
@@ -193,7 +203,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     height: 40,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   image: {
     width: 48,
