@@ -3,7 +3,7 @@
 
 @interface OptimoveInitializer
 
-+ (void)initializeObjc:(NSString *_Nonnull)optimoveCredentials optimobileCredentials:(NSString *_Nonnull)optimobileCredentials inAppConsentStrategy:(NSString *_Nonnull)inAppConsentStrategy enableDeferredDeepLinking:(BOOL)enableDeferredDeepLinking;
++ (void)initialize:(NSString *_Nonnull)optimoveCredentials optimobileCredentials:(NSString *_Nonnull)optimobileCredentials inAppConsentStrategy:(NSString *_Nonnull)inAppConsentStrategy enableDeferredDeepLinking:(BOOL)enableDeferredDeepLinking;
 
 + (BOOL)application:(UIApplication * _Nonnull)application userActivity:(NSUserActivity * _Nonnull)userActivity
  restorationHandler:(void (^_Nonnull)(NSArray<id<UIUserActivityRestoring>> * _Nonnull restorableObjects))restorationHandler;

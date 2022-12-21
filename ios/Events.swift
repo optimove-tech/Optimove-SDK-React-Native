@@ -61,19 +61,19 @@ struct DeeplinkResolvedEvent: ReactEvent {
         switch deepLinkResolution {
         case .lookupFailed(let dl):
             urlString = dl.absoluteString
-            data["resolution"] = 0
+            data["resolution"] = "LOOKUP_FAILED"
         case .linkNotFound(let dl):
             urlString = dl.absoluteString
-            data["resolution"] = 1
+            data["resolution"] = "LINK_NOT_FOUND"
         case .linkExpired(let dl):
             urlString = dl.absoluteString
-            data["resolution"] = 2
+            data["resolution"] = "LINK_EXPIRED"
         case .linkLimitExceeded(let dl):
             urlString = dl.absoluteString
-            data["resolution"] = 3
+            data["resolution"] = "LINK_LIMIT_EXCEEDED"
         case .linkMatched(let dl):
             urlString = dl.url.absoluteString
-            data["resolution"] = 4
+            data["resolution"] = "LINK_MATCHED"
             var content = [String: Any?]()
             content["title"] = dl.content.title
             content["description"] = dl.content.description

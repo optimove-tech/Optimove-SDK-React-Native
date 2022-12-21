@@ -11,11 +11,10 @@ class OptimoveInitializer: NSObject {
     
     
     @objc
-    public static func initializeObjc(_ optimoveCredentials: String, optimobileCredentials: String, inAppConsentStrategy: String, enableDeferredDeepLinking: Bool) {
-        initializeSwift(optimoveCredentials, optimobileCredentials: optimobileCredentials, inAppConsentStrategy: InAppConsentStrategy(rawValue: inAppConsentStrategy)!, enableDeferredDeepLinking: enableDeferredDeepLinking)
-    }
-    
-    public static func initializeSwift(_ optimoveCredentials: String, optimobileCredentials: String, inAppConsentStrategy: InAppConsentStrategy, enableDeferredDeepLinking: Bool){
+    public static func initialize(_ optimoveCredentials: String, optimobileCredentials: String, inAppConsentStrategy: String, enableDeferredDeepLinking: Bool) {
+        //crash immediately if string is not one of the enums
+        let inAppConsentStrategyEnum: InAppConsentStrategy = InAppConsentStrategy(rawValue: inAppConsentStrategy)!
+        
         let config = OptimoveConfigBuilder(optimoveCredentials: optimoveCredentials, optimobileCredentials: optimobileCredentials)
 
         if (enableDeferredDeepLinking) {
@@ -35,8 +34,8 @@ class OptimoveInitializer: NSObject {
             OptimoveReactNativeEmitter.shared.emit(event: PushOpenedEvent(pushNotification: notification))
         })
 
-        if inAppConsentStrategy != .disabled {
-            config.enableInAppMessaging(inAppConsentStrategy: inAppConsentStrategy == .autoEnroll ? .autoEnroll : .explicitByUser)
+        if inAppConsentStrategyEnum != .disabled {
+            config.enableInAppMessaging(inAppConsentStrategy: inAppConsentStrategyEnum == .autoEnroll ? .autoEnroll : .explicitByUser)
         }
 
         config.setInAppDeepLinkHandler { inAppButtonPress in
@@ -50,7 +49,6 @@ class OptimoveInitializer: NSObject {
             OptimoveReactNativeEmitter.shared.emit(event: InAppInboxUpdatedEvent())
         }
     }
-    
     
     private static func overrideInstallInfo(builder: OptimoveConfigBuilder) -> Void {
         let runtimeInfo: [String : AnyObject] = [

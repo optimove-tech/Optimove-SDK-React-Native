@@ -33,7 +33,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 {
   RCTAppSetupPrepareApp(application);
   
-  [OptimoveInitializer initializeObjc:@"<YOUR OPTIMOVE CREDENTIALS>" optimobileCredentials:@"<YOUR OPTIMOBILE CREDENTIALS>" inAppConsentStrategy:@"auto-enroll|in-app-disabled|explicit-by-user" enableDeferredDeepLinking:true];
+  [OptimoveInitializer initialize:@"<YOUR OPTIMOVE CREDENTIALS>" optimobileCredentials:@"<YOUR OPTIMOBILE CREDENTIALS>" inAppConsentStrategy:@"auto-enroll|in-app-disabled|explicit-by-user" enableDeferredDeepLinking:true];
   
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
 
