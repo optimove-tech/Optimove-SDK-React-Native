@@ -1,7 +1,7 @@
 {
   "name": "optimove-react-native",
   "version": "1.0.0",
-  "description": "test",
+  "description": "Optimove React Native SDK",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
