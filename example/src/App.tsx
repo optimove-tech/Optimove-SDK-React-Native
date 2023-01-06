@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Optimove from 'optimove-react-native';
+import Optimove from '@optimove-inc/react-native';
 import * as React from 'react';
 import { Alert } from 'react-native';
 import { HomeScreen } from './HomeScreen';

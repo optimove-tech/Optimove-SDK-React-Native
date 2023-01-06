@@ -1,5 +1,5 @@
 {
-  "name": "optimove-react-native",
+  "name": "@optimove-inc/react-native",
   "version": "1.0.0",
   "description": "Optimove React Native SDK",
   "main": "lib/commonjs/index",

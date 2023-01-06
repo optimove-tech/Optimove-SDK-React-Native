@@ -8,7 +8,7 @@ import {
   Button,
   ScrollView,
 } from 'react-native';
-import Optimove from 'optimove-react-native';
+import Optimove from '@optimove-inc/react-native';
 import { useEffect, useState } from 'react';
 
 const Separator = () => <View style={styles.separator} />;
