@@ -1,4 +1,4 @@
-import Optimove from 'optimove-react-native';
+import Optimove from '@optimove-inc/react-native';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import {
