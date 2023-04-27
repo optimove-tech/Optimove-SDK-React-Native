@@ -77,13 +77,13 @@ PODS:
   - libevent (2.1.12)
   - OpenSSL-Universal (1.1.1100)
   - optimove-react-native (1.0.0):
-    - OptimoveCore (= 5.1.1)
-    - OptimoveSDK (= 5.1.1)
+    - OptimoveCore (= 5.2.2)
+    - OptimoveSDK (= 5.2.2)
     - React-Core
-  - OptimoveCore (5.1.1)
-  - OptimoveNotificationServiceExtension (5.1.1)
-  - OptimoveSDK (5.1.1):
-    - OptimoveCore (= 5.1.1)
+  - OptimoveCore (5.2.2)
+  - OptimoveNotificationServiceExtension (5.2.2)
+  - OptimoveSDK (5.2.2):
+    - OptimoveCore (= 5.2.2)
   - RCT-Folly (2021.07.22.00):
     - boost
     - DoubleConversion
@@ -452,7 +452,7 @@ DEPENDENCIES:
   - libevent (~> 2.1.12)
   - OpenSSL-Universal (= 1.1.1100)
   - optimove-react-native (from `../..`)
-  - OptimoveNotificationServiceExtension (~> 5.1.1)
+  - OptimoveNotificationServiceExtension (~> 5.2.2)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
@@ -612,10 +612,10 @@ SPEC CHECKSUMS:
   hermes-engine: 7fe5fc6ef707b7fdcb161b63898ec500e285653d
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
-  optimove-react-native: 8ed22a99ea701f1eaebdf35bfd6917e83fbc92b8
-  OptimoveCore: 491a1609941a2a713a52c7783538967ae787cadf
-  OptimoveNotificationServiceExtension: 209c7244d7a3eaf947893cbd8f03f46225f96dca
-  OptimoveSDK: 07b78a51c7aa92ac04342389813744038f328559
+  optimove-react-native: 53e61eaaadaceffece2acb3171363e09ebd9f881
+  OptimoveCore: fa060aa4e06a280f7f3f433c62d97c92de55aa2c
+  OptimoveNotificationServiceExtension: 79f38d1e4c35ef1e971803a13ebf02560980399c
+  OptimoveSDK: 96940db3c22cbd4b29b0e4258b4d76931eba31ff
   RCT-Folly: 0080d0a6ebf2577475bda044aa59e2ca1f909cda
   RCTRequired: 21229f84411088e5d8538f21212de49e46cc83e2
   RCTTypeSafety: 62eed57a32924b09edaaf170a548d1fc96223086
@@ -652,6 +652,6 @@ SPEC CHECKSUMS:
   Yoga: eca980a5771bf114c41a754098cd85e6e0d90ed7
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: c323622d22209e4eb14d0593c0cce4a19d6e26e3
+PODFILE CHECKSUM: cc5b67297a51c61ebaedebcaa29d5c931b8629d9
 
 COCOAPODS: 1.11.3
