@@ -33,6 +33,10 @@ public class OptimoveReactNativeInitializer {
       config.enableDeepLinking((innerContext, resolution, link, data) -> OptimoveReactNativeEmitter.getInstance().emit(new DDLEvent(resolution, link, data)));
     }
 
+    if (optimoveReactNativeConfig.getNotificationSmallIconDrawableId() != null) {
+      config.setPushSmallIconId(optimoveReactNativeConfig.getNotificationSmallIconDrawableId());
+    }
+
     overrideInstallInfo(config);
 
     OptimoveReactNativeEmitter.initialize();

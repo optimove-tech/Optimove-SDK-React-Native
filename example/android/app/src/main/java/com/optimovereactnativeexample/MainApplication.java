@@ -59,9 +59,12 @@ public class MainApplication extends Application implements ReactApplication {
 
     OptimoveReactNativeInitializer.initializeOptimove(
       OptimoveReactNativeConfig.newInstance()
-                                 .optimoveCredentials("<YOUR OPTIMOVE CREDENTIALS>")
-                                 .optimobileCredentials("<YOUR OPTIMOBILE CREDENTIALS>")
-                                 .deeplinkEnabled(true).enableInAppWithConsentStrategy(OptimoveConfig.InAppConsentStrategy.AUTO_ENROLL).build(), getApplicationContext());
+        .optimoveCredentials("<YOUR OPTIMOVE CREDENTIALS>")
+        .optimobileCredentials("<YOUR OPTIMOBILE CREDENTIALS>")
+        .deeplinkEnabled(true)
+        .enableInAppWithConsentStrategy(OptimoveConfig.InAppConsentStrategy.AUTO_ENROLL)
+        .setPushSmallIconId(getApplicationInfo().icon)
+        .build(), getApplicationContext());
     // If you opted-in for the New Architecture, we enable the TurboModule system
     ReactFeatureFlags.useTurboModules = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
     SoLoader.init(this, /* native exopackage */ false);
