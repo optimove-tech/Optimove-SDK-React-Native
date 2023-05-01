@@ -126,7 +126,7 @@ repositories {
 dependencies {
     //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
-  api 'com.optimove.android:optimove-android:7.0.0'
+  api 'com.optimove.android:optimove-android:7.2.0'
 // From node_modules
 }
 
