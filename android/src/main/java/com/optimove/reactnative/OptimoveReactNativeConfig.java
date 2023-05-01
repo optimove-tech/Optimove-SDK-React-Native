@@ -74,7 +74,7 @@ public class OptimoveReactNativeConfig {
   }
 
   public interface FinalStep {
-    FinalStep setPushSmallIconId(@DrawableRes int drawableIconId);
+    FinalStep setPushSmallIconId(@DrawableRes Integer drawableIconId);
     OptimoveReactNativeConfig build();
   }
 
@@ -109,7 +109,7 @@ public class OptimoveReactNativeConfig {
       return this;
     }
 
-    public FinalStep setPushSmallIconId(@DrawableRes int drawableIconId) {
+    public FinalStep setPushSmallIconId(@DrawableRes Integer drawableIconId) {
       this.notificationSmallIconDrawableId = drawableIconId;
       return this;
     }
