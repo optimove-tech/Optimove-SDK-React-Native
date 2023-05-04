@@ -76,7 +76,7 @@ PODS:
   - hermes-engine (0.70.5)
   - libevent (2.1.12)
   - OpenSSL-Universal (1.1.1100)
-  - optimove-react-native (1.0.0):
+  - optimove-react-native (1.1.0):
     - OptimoveCore (= 5.2.2)
     - OptimoveSDK (= 5.2.2)
     - React-Core
@@ -612,7 +612,7 @@ SPEC CHECKSUMS:
   hermes-engine: 7fe5fc6ef707b7fdcb161b63898ec500e285653d
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
-  optimove-react-native: 53e61eaaadaceffece2acb3171363e09ebd9f881
+  optimove-react-native: 147e3a971f996788eda3618f9c2346aec7f5a9db
   OptimoveCore: fa060aa4e06a280f7f3f433c62d97c92de55aa2c
   OptimoveNotificationServiceExtension: 79f38d1e4c35ef1e971803a13ebf02560980399c
   OptimoveSDK: 96940db3c22cbd4b29b0e4258b4d76931eba31ff
