@@ -17,7 +17,7 @@ import org.json.JSONObject;
 
 public class OptimoveReactNativeInitializer {
 
-  private static final String SDK_VERSION = "1.0.0";
+  private static final String SDK_VERSION = "1.1.0";
   private static final int SDK_TYPE = 9;
   private static final int RUNTIME_TYPE = 7;
   private static final String RUNTIME_VERSION = "Unknown";
@@ -31,6 +31,10 @@ public class OptimoveReactNativeInitializer {
 
     if (optimoveReactNativeConfig.getDeeplinkEnabled()) {
       config.enableDeepLinking((innerContext, resolution, link, data) -> OptimoveReactNativeEmitter.getInstance().emit(new DDLEvent(resolution, link, data)));
+    }
+
+    if (optimoveReactNativeConfig.getNotificationSmallIconDrawableId() != null) {
+      config.setPushSmallIconId(optimoveReactNativeConfig.getNotificationSmallIconDrawableId());
     }
 
     overrideInstallInfo(config);

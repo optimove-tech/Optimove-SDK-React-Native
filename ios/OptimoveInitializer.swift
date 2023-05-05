@@ -3,18 +3,17 @@ import OptimoveSDK
 
 @objc(OptimoveInitializer)
 class OptimoveInitializer: NSObject {
-    
-    private static let sdkVersion = "1.0.0"
+
+    private static let sdkVersion = "1.1.0"
     private static let sdkType = 9
     private static let runtimeType = 7
     private static let runtimeVersion = "Unknown";
-    
-    
+
     @objc
     public static func initialize(_ optimoveCredentials: String, optimobileCredentials: String, inAppConsentStrategy: String, enableDeferredDeepLinking: Bool) {
         //crash immediately if string is not one of the enums
         let inAppConsentStrategyEnum: InAppConsentStrategy = InAppConsentStrategy(rawValue: inAppConsentStrategy)!
-        
+
         let config = OptimoveConfigBuilder(optimoveCredentials: optimoveCredentials, optimobileCredentials: optimobileCredentials)
 
         if (enableDeferredDeepLinking) {
@@ -43,13 +42,13 @@ class OptimoveInitializer: NSObject {
         }
 
         overrideInstallInfo(builder: config)
-            
+
         Optimove.initialize(with: config.build())
         OptimoveInApp.setOnInboxUpdated {
             OptimoveReactNativeEmitter.shared.emit(event: InAppInboxUpdatedEvent())
         }
     }
-    
+
     private static func overrideInstallInfo(builder: OptimoveConfigBuilder) -> Void {
         let runtimeInfo: [String : AnyObject] = [
             "id": runtimeType as AnyObject,
@@ -70,7 +69,7 @@ class OptimoveInitializer: NSObject {
         #endif
         builder.setTargetType(isRelease: isRelease);
     }
-    
+
     @objc(application:userActivity:restorationHandler:)
     static func application(_ application: UIApplication, userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void){
             _ = Optimove.shared.application(application, continue: userActivity, restorationHandler: restorationHandler)
