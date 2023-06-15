@@ -2,10 +2,10 @@ export interface InAppInboxItem {
   id: number;
   title: string;
   subtitle: string;
-  availableFrom: Date | null;
-  availableTo: Date | null;
-  dismissedAt: Date | null;
-  sentAt: Date;
+  availableFrom: string | null;
+  availableTo: string | null;
+  dismissedAt: string | null;
+  sentAt: string;
   data: Record<string, any> | null;
   isRead: boolean;
   imageUrl: string | null;
