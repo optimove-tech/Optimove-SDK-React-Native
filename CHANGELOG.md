@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1
+
+Fixed the ```Date``` types of ```InAppInboxItem``` to be ```string```
+
 ## 1.1.0
 
 - Changed the iOS SDK version to 5.2.2
