@@ -3,11 +3,14 @@ export interface DeepLinkContent {
   description: string | null;
 }
 
+
 export interface DeepLink {
   resolution: DeepLinkResolution;
   url: string;
-  content: DeepLinkContent | null;
-  linkData: Record<string, any> | null;
+  link: {
+    content: DeepLinkContent;
+    data?: Record<string, any>;
+  }
 }
 
 export enum DeepLinkResolution {

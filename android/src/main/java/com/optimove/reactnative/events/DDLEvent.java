@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.optimove.android.optimobile.DeferredDeepLinkHelper;
+import com.optimove.reactnative.JSONtoMapMapper;
 
 public class DDLEvent implements ReactEvent {
 
@@ -39,14 +40,15 @@ public class DDLEvent implements ReactEvent {
         linkData = new WritableNativeMap();
 
         assert data != null;
-        linkData.putString("url", data.url);
 
         WritableMap content = new WritableNativeMap();
         content.putString("title", data.content.title);
         content.putString("description", data.content.description);
         linkData.putMap("content", content);
 
-        linkData.putString("data", data.data.toString());
+        try {
+          linkData.putMap("data", JSONtoMapMapper.jsonToReact(data.data));
+        } catch (Throwable ignored) {}
         break;
       case LINK_NOT_FOUND:
         mappedResolution = "LINK_NOT_FOUND";
