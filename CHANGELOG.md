@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.2
+
+Fixed the DDL data parse passed from Android to RN from string to JSON object
+
 ## 1.1.1
 
 Fixed the ```Date``` types of ```InAppInboxItem``` to be ```string```
