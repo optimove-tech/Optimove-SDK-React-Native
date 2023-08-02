@@ -1,7 +1,12 @@
 #import <Foundation/Foundation.h>
 #import <React/RCTBridgeModule.h>
 #import <React/RCTEventEmitter.h>
+
+#if __has_include(<OptimoveReactNative/OptimoveReactNative-Swift.h>)
+#import <OptimoveReactNative/OptimoveReactNative-Swift.h>
+#elif __has_include("OptimoveReactNative-Swift.h")
 #import "OptimoveReactNative-Swift.h"
+#endif
 
 @interface RCT_EXTERN_MODULE(OptimoveReactNative, RCTEventEmitter)
 
