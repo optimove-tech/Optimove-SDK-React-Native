@@ -36,23 +36,22 @@ public class DDLEvent implements ReactEvent {
     params.putString("url", link);
 
     String mappedResolution;
-    WritableMap linkData = null;
     switch (resolution) {
       case LINK_MATCHED:
         mappedResolution = "LINK_MATCHED";
-        linkData = new WritableNativeMap();
 
         assert data != null;
 
         WritableMap content = new WritableNativeMap();
         content.putString("title", data.content.title);
         content.putString("description", data.content.description);
-        linkData.putMap("content", content);
+        params.putMap("content", content);
 
         try {
-          linkData.putMap("data", JSONtoMapMapper.jsonToReact(data.data));
+          params.putMap("linkData", JSONtoMapMapper.jsonToReact(data.data));
         } catch (Throwable e) {
           Log.e(TAG, String.format("Couldn't parse the DDL data due to: %s", e.getMessage()));
+          params.putMap("linkData", new WritableNativeMap());
         }
         break;
       case LINK_NOT_FOUND:
@@ -71,7 +70,6 @@ public class DDLEvent implements ReactEvent {
     }
 
     params.putString("resolution", mappedResolution);
-    params.putMap("link", linkData);
 
     return params;
   }
