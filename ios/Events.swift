@@ -78,11 +78,8 @@ struct DeeplinkResolvedEvent: ReactEvent {
             content["title"] = dl.content.title
             content["description"] = dl.content.description
 
-            var link = [String: Any?]()
-            link["content"] = content
-            link["data"] = dl.data
-
-            data["link"] = link
+            data["content"] = content
+            data["linkData"] = dl.data
         }
         data["url"] = urlString
         
