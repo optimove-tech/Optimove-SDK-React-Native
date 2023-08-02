@@ -1,5 +1,7 @@
 package com.optimove.reactnative.events;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -10,6 +12,7 @@ import com.optimove.reactnative.JSONtoMapMapper;
 
 public class DDLEvent implements ReactEvent {
 
+  private static final String TAG = DDLEvent.class.getName();
   private final DeferredDeepLinkHelper.DeepLinkResolution resolution;
   private final String link;
   @Nullable
@@ -48,7 +51,9 @@ public class DDLEvent implements ReactEvent {
 
         try {
           linkData.putMap("data", JSONtoMapMapper.jsonToReact(data.data));
-        } catch (Throwable ignored) {}
+        } catch (Throwable e) {
+          Log.e(TAG, String.format("Couldn't parse the DDL data due to: %s", e.getMessage()));
+        }
         break;
       case LINK_NOT_FOUND:
         mappedResolution = "LINK_NOT_FOUND";
