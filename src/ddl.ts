@@ -3,12 +3,19 @@ export interface DeepLinkContent {
   description: string | null;
 }
 
-export interface DeepLink {
-  resolution: DeepLinkResolution;
+interface NonMatchedResolution {
+  resolution: Exclude<DeepLinkResolution, DeepLinkResolution.LINK_MATCHED>;
   url: string;
-  content: DeepLinkContent | null;
-  linkData: Record<string, any> | null;
 }
+
+interface MatchedResolution {
+  resolution: DeepLinkResolution.LINK_MATCHED;
+  url: string;
+  content: DeepLinkContent;
+  linkData: Record<string,any>;
+}
+
+export type DeepLink = NonMatchedResolution | MatchedResolution;
 
 export enum DeepLinkResolution {
   LOOKUP_FAILED = 'LOOKUP_FAILED',

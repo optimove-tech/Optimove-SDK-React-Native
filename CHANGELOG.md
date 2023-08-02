@@ -1,5 +1,31 @@
 # Changelog
 
+## 2.0.0
+
+
+- [Breaking] Changed the ```DeepLink``` object structure received from the DeepLinkHandler when calling ```Optimove.setDeepLinkHandler``` to:
+
+```typescript
+export interface DeepLinkContent {
+  title: string | null;
+  description: string | null;
+}
+
+interface NonMatchedResolution {
+  resolution: Exclude<DeepLinkResolution, DeepLinkResolution.LINK_MATCHED>;
+  url: string;
+}
+
+interface MatchedResolution {
+  resolution: DeepLinkResolution.LINK_MATCHED;
+  url: string;
+  content: DeepLinkContent;
+  linkData: Record<string,any>;
+}
+
+export type DeepLink = NonMatchedResolution | MatchedResolution;
+```
+
 ## 1.1.1
 
 Fixed the ```Date``` types of ```InAppInboxItem``` to be ```string```

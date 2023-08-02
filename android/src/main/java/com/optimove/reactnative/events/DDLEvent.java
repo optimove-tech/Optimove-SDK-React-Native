@@ -1,14 +1,18 @@
 package com.optimove.reactnative.events;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.optimove.android.optimobile.DeferredDeepLinkHelper;
+import com.optimove.reactnative.JSONtoMapMapper;
 
 public class DDLEvent implements ReactEvent {
 
+  private static final String TAG = DDLEvent.class.getName();
   private final DeferredDeepLinkHelper.DeepLinkResolution resolution;
   private final String link;
   @Nullable
@@ -32,21 +36,23 @@ public class DDLEvent implements ReactEvent {
     params.putString("url", link);
 
     String mappedResolution;
-    WritableMap linkData = null;
     switch (resolution) {
       case LINK_MATCHED:
         mappedResolution = "LINK_MATCHED";
-        linkData = new WritableNativeMap();
 
         assert data != null;
-        linkData.putString("url", data.url);
 
         WritableMap content = new WritableNativeMap();
         content.putString("title", data.content.title);
         content.putString("description", data.content.description);
-        linkData.putMap("content", content);
+        params.putMap("content", content);
 
-        linkData.putString("data", data.data.toString());
+        try {
+          params.putMap("linkData", JSONtoMapMapper.jsonToReact(data.data));
+        } catch (Throwable e) {
+          Log.e(TAG, String.format("Couldn't parse the DDL data due to: %s", e.getMessage()));
+          params.putMap("linkData", new WritableNativeMap());
+        }
         break;
       case LINK_NOT_FOUND:
         mappedResolution = "LINK_NOT_FOUND";
@@ -64,7 +70,6 @@ public class DDLEvent implements ReactEvent {
     }
 
     params.putString("resolution", mappedResolution);
-    params.putMap("link", linkData);
 
     return params;
   }
