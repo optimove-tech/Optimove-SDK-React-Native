@@ -31,6 +31,20 @@ public class PushReceiver extends PushBroadcastReceiver {
     PushReceiver.handlePushOpen(context, pushMessage, null);
   }
 
+  @Override
+  protected Intent getPushOpenActivityIntent(Context context, PushMessage pushMessage) {
+    Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
+
+    if (null == launchIntent) {
+      return null;
+    }
+
+    launchIntent.putExtra(PushMessage.EXTRAS_KEY, pushMessage);
+
+    return launchIntent;
+  }
+
+
   @SuppressWarnings("unchecked")
   public static void handlePushOpen(Context context, PushMessage pushMessage, String actionId) {
     PushReceiver pr = new PushReceiver();
