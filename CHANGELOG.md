@@ -2,6 +2,7 @@
 
 ## 2.0.0
 
+- Support iOS projects with `use_frameworks!` enabled
 - [Breaking] For push opens don't set launch intent flags. Instead rely on the default React Native `singleTask` launch mode.
 - [Breaking] Changed the ```DeepLink``` object structure received from the DeepLinkHandler when calling ```Optimove.setDeepLinkHandler``` to:
 
