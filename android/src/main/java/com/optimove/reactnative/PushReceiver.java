@@ -40,7 +40,6 @@ public class PushReceiver extends PushBroadcastReceiver {
     }
 
     launchIntent.putExtra(PushMessage.EXTRAS_KEY, pushMessage);
-    launchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
 
     return launchIntent;
   }
