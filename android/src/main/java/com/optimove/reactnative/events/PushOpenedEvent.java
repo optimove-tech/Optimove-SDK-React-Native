@@ -1,23 +1,19 @@
 package com.optimove.reactnative.events;
 
-import android.net.Uri;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.bridge.WritableNativeMap;
 import com.optimove.android.optimobile.PushMessage;
 
-public class PushOpenedEvent implements ReactEvent {
+public class PushOpenedEvent extends PushEvent implements ReactEvent {
 
-  @NonNull
-  private final PushMessage push;
+  private static final String TAG = PushOpenedEvent.class.getName();
   @Nullable
   private final String actionId;
 
   public PushOpenedEvent(@NonNull PushMessage push, @Nullable String actionId) {
-    this.push = push;
+    super(push);
     this.actionId = actionId;
   }
 
@@ -33,19 +29,17 @@ public class PushOpenedEvent implements ReactEvent {
   }
 
   @Override
+  protected String getTag() {
+    return TAG;
+  }
+
+  @Override
   public WritableMap getData() {
-    WritableMap map = new WritableNativeMap();
-    Uri url = push.getUrl();
+    WritableMap map = super.getData();
 
     if (null != actionId) {
       map.putString("actionId", actionId);
     }
-
-    map.putInt("id", push.getId());
-    map.putString("title", push.getTitle());
-    map.putString("message", push.getMessage());
-    map.putString("data", push.getData().toString());
-    map.putString("url", url != null ? url.toString() : null);
 
     return map;
   }

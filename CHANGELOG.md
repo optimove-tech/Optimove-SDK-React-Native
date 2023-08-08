@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1
+
+Fixed the parsing of the push data passed from Android to React Native
+
 ## 2.0.0
 
 - Support iOS projects with `use_frameworks!` enabled
