@@ -32,6 +32,7 @@ import java.util.TimeZone;
 public class OptimoveReactNativeModule extends ReactContextBaseJavaModule {
 
   public static final String NAME = "OptimoveReactNative";
+  private static final String TAG = OptimoveReactNativeModule.class.getName();
 
   public OptimoveReactNativeModule(@NonNull ReactApplicationContext reactContext) {
     super(reactContext);
@@ -166,53 +167,61 @@ public class OptimoveReactNativeModule extends ReactContextBaseJavaModule {
 
     WritableArray results = new WritableNativeArray();
     for (InAppInboxItem item : inboxItems) {
-      WritableMap mapped = new WritableNativeMap();
-      mapped.putInt("id", item.getId());
-      mapped.putString("title", item.getTitle());
-      mapped.putString("subtitle", item.getSubtitle());
-      mapped.putBoolean("isRead", item.isRead());
-      mapped.putString("sentAt", formatter.format(item.getSentAt()));
-
-      Date availableFrom = item.getAvailableFrom();
-      Date availableTo = item.getAvailableTo();
-      Date dismissedAt = item.getDismissedAt();
-      JSONObject data = item.getData();
-      URL imageUrl = item.getImageUrl();
-
-      if (null == availableFrom) {
-        mapped.putNull("availableFrom");
-      } else {
-        mapped.putString("availableFrom", formatter.format(availableFrom));
-      }
-
-      if (null == availableTo) {
-        mapped.putNull("availableTo");
-      } else {
-        mapped.putString("availableTo", formatter.format(availableTo));
-      }
-
-      if (null == dismissedAt) {
-        mapped.putNull("dismissedAt");
-      } else {
-        mapped.putString("dismissedAt", formatter.format(dismissedAt));
-      }
-
-      if (data == null) {
-        mapped.putNull("data");
-      } else {
-        mapped.putString("data", data.toString());
-      }
-
-      if (imageUrl == null) {
-        mapped.putNull("imageUrl");
-      } else {
-        mapped.putString("imageUrl", imageUrl.toString());
-      }
-
-      results.pushMap(mapped);
+      results.pushMap(mapInboxItemToMap(item, formatter));
     }
 
     promise.resolve(results);
+  }
+
+  private WritableMap mapInboxItemToMap(InAppInboxItem item, SimpleDateFormat formatter){
+    WritableMap mapped = new WritableNativeMap();
+    mapped.putInt("id", item.getId());
+    mapped.putString("title", item.getTitle());
+    mapped.putString("subtitle", item.getSubtitle());
+    mapped.putBoolean("isRead", item.isRead());
+    mapped.putString("sentAt", formatter.format(item.getSentAt()));
+
+    Date availableFrom = item.getAvailableFrom();
+    Date availableTo = item.getAvailableTo();
+    Date dismissedAt = item.getDismissedAt();
+    JSONObject data = item.getData();
+    URL imageUrl = item.getImageUrl();
+
+    if (null == availableFrom) {
+      mapped.putNull("availableFrom");
+    } else {
+      mapped.putString("availableFrom", formatter.format(availableFrom));
+    }
+
+    if (null == availableTo) {
+      mapped.putNull("availableTo");
+    } else {
+      mapped.putString("availableTo", formatter.format(availableTo));
+    }
+
+    if (null == dismissedAt) {
+      mapped.putNull("dismissedAt");
+    } else {
+      mapped.putString("dismissedAt", formatter.format(dismissedAt));
+    }
+
+    if (data == null) {
+      mapped.putNull("data");
+    } else {
+      try {
+        mapped.putMap("data", JSONtoMapMapper.jsonToReact(data));
+      } catch (Throwable e) {
+        Log.e(TAG, String.format("Couldn't parse message data due to: %s", e.getMessage()));
+      }
+    }
+
+    if (imageUrl == null) {
+      mapped.putNull("imageUrl");
+    } else {
+      mapped.putString("imageUrl", imageUrl.toString());
+    }
+
+    return mapped;
   }
 
   @ReactMethod

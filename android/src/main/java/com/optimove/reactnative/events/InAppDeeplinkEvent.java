@@ -1,13 +1,19 @@
 package com.optimove.reactnative.events;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.optimove.android.optimobile.InAppDeepLinkHandlerInterface;
+import com.optimove.reactnative.JSONtoMapMapper;
+
+import org.json.JSONObject;
 
 public class InAppDeeplinkEvent implements ReactEvent {
 
+  private static final String TAG = InAppDeeplinkEvent.class.getName();
   private final InAppDeepLinkHandlerInterface.InAppButtonPress buttonPress;
 
   public InAppDeeplinkEvent(InAppDeepLinkHandlerInterface.InAppButtonPress buttonPress) {
@@ -25,9 +31,21 @@ public class InAppDeeplinkEvent implements ReactEvent {
     WritableMap map = new WritableNativeMap();
 
     map.putInt("messageId", buttonPress.getMessageId());
-    map.putString("deepLinkData", buttonPress.getDeepLinkData().toString());
-    if (buttonPress.getMessageData() != null) {
-      map.putString("messageData", buttonPress.getMessageData().toString());
+
+    try {
+      map.putMap("deepLinkData", JSONtoMapMapper.jsonToReact(buttonPress.getDeepLinkData()));
+    } catch (Throwable e) {
+      Log.e(TAG, String.format("Couldn't parse deepLink data due to: %s", e.getMessage()));
+    }
+
+    if (buttonPress.getMessageData() == null) {
+      return map;
+    }
+
+    try {
+      map.putMap("messageData", JSONtoMapMapper.jsonToReact(buttonPress.getMessageData()));
+    } catch (Throwable e) {
+      Log.e(TAG, String.format("Couldn't parse message data due to: %s", e.getMessage()));
     }
 
     return map;
