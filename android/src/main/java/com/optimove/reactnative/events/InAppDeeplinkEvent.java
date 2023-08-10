@@ -39,12 +39,14 @@ public class InAppDeeplinkEvent implements ReactEvent {
     }
 
     if (buttonPress.getMessageData() == null) {
+      map.putNull("messageData");
       return map;
     }
 
     try {
       map.putMap("messageData", JSONtoMapMapper.jsonToReact(buttonPress.getMessageData()));
     } catch (Throwable e) {
+      map.putNull("messageData");
       Log.e(TAG, String.format("Couldn't parse message data due to: %s", e.getMessage()));
     }
 
