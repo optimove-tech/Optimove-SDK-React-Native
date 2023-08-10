@@ -39,6 +39,8 @@ public class PushOpenedEvent extends PushEvent implements ReactEvent {
 
     if (null != actionId) {
       map.putString("actionId", actionId);
+    } else {
+      map.putNull("actionId");
     }
 
     return map;

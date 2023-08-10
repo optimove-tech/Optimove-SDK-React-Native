@@ -32,6 +32,7 @@ public abstract class PushEvent implements ReactEvent {
     try {
       map.putMap("data", JSONtoMapMapper.jsonToReact(push.getData()));
     } catch (Throwable e) {
+      map.putNull("data");
       Log.e(getTag(), String.format("Couldn't parse push data due to: %s", e.getMessage()));
     }
     map.putString("url", url != null ? url.toString() : null);
