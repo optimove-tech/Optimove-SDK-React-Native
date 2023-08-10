@@ -2,8 +2,8 @@
 
 ## 2.0.2
 
-Fixed the parsing of all in app related data passed from Android to React Native
-
+- Fixed the parsing of all in app related data passed from Android to React Native
+- Fixed the push events data and push opened event actionId to set null explicitly when passed from Android to React Native
 
 ## 2.0.1
 
