@@ -3,12 +3,12 @@ export interface DeepLinkContent {
   description: string | null;
 }
 
-interface NonMatchedResolution {
+export interface NonMatchedResolution {
   resolution: Exclude<DeepLinkResolution, DeepLinkResolution.LINK_MATCHED>;
   url: string;
 }
 
-interface MatchedResolution {
+export interface MatchedResolution {
   resolution: DeepLinkResolution.LINK_MATCHED;
   url: string;
   content: DeepLinkContent;
