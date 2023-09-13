@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.3
+
+- Updated the DDL types to export the `MatchedResolution` and `NonMatchedResolution` types
+
 ## 2.0.2
 
 - Fixed the parsing of all in app related data passed from Android to React Native
