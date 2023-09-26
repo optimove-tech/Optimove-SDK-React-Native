@@ -20,6 +20,9 @@ In this guide we will describe the steps to implement the Optimove React Native 
 3. [Deferred Deep Linking](https://github.com/optimove-tech/Optimove-SDK-React-Native/wiki/deferred-deep-linking)
 4. [Testing](https://github.com/optimove-tech/Optimove-SDK-React-Native/wiki/testing-troubleshooting)
 
+> **NOTE**:
+To unlock these capabilities, you will need to have added the relevant OptiMobile channels to your Optimove package. If you can’t see this feature in your Optimove instance, contact your CSM to find out more.
+
 ## License
 
 Optimove React Native SDK is available under the [MIT license](LICENSE).
