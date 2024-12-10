@@ -17,9 +17,9 @@ Pod::Spec.new do |s|
   s.source_files = "ios/**/*.{h,m,mm,swift}"
 
   s.dependency "React-Core"
-  s.dependency 'OptimoveCore', '5.2.2'
-  s.dependency 'OptimoveSDK', '5.2.2'
-  
+  s.dependency 'OptimoveCore', '~> 6.1.0'
+  s.dependency 'OptimoveSDK', '~> 6.1.0'
+
   # Don't install the dependencies when we run `pod install` in the old architecture.
   if ENV['RCT_NEW_ARCH_ENABLED'] == '1' then
     s.compiler_flags = folly_compiler_flags + " -DRCT_NEW_ARCH_ENABLED=1"
