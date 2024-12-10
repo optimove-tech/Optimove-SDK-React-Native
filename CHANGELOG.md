@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.4
+
+- Updated the iOS SDK to version `~> 6.1.0`
+
 ## 2.0.3
 
 - Updated the DDL types to export the `MatchedResolution` and `NonMatchedResolution` types
