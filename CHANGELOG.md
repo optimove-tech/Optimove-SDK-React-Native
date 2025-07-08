@@ -1,8 +1,16 @@
 # Changelog
 
-## 2.0.4
+## 2.1.0
 
-- Updated the iOS SDK to version `~> 6.1.0`
+- Updated the iOS SDK to version `~> 6.2.3`:
+  - Add Privacy Manifest
+  - Add support for coexistence with other SDKs that swizzle push related app delegate methods
+  - Fix invalidating sessions on NetworkClientImpl deinit
+  - Fix same immediate events sent multiple times
+  - Fix in app presentation issue in orientation change
+  - Fix Xcode 16 OptimoveSDK warnings
+  - Fix deeplink decoding issue
+  - Remove SetUserAgent event
 
 ## 2.0.3
 
