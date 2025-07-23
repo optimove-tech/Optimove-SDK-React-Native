@@ -1,9 +1,3 @@
-import {
-  EmitterSubscription,
-  NativeEventEmitter,
-  NativeModules,
-  Platform,
-} from 'react-native';
 import type {
   DeepLinkHandler,
   InAppDeepLinkHandler,
@@ -15,6 +9,13 @@ import type {
   InAppInboxSummary,
   OptimoveInAppPresentationResult,
 } from './inApp';
+import {
+  NativeEventEmitter,
+  NativeModules,
+  Platform,
+} from 'react-native';
+
+import type { EmitterSubscription } from 'react-native';
 
 const LINKING_ERROR =
   `The package '@optimove-inc/react-native' doesn't seem to be linked. Make sure: \n\n` +
