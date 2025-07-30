@@ -26,4 +26,5 @@ export enum OptimoveInAppPresentationResult {
   Presented = 0,
   Expired = 1,
   Failed = 2,
+  Paused = 3
 }

@@ -99,6 +99,8 @@ class OptimoveReactNative: RCTEventEmitter {
             resolve(1)
         case .FAILED:
             resolve(2)
+        case .PAUSED:
+            resolve(3)
         }
     }
 
