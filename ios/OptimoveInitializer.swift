@@ -2,7 +2,7 @@ import Foundation
 import OptimoveSDK
 
 @objc(OptimoveInitializer)
-class OptimoveInitializer: NSObject {
+public class OptimoveInitializer: NSObject {
 
     private static let sdkVersion = "2.1.0"
     private static let sdkType = 9
@@ -71,13 +71,13 @@ class OptimoveInitializer: NSObject {
     }
 
     @objc(application:userActivity:restorationHandler:)
-    static func application(_ application: UIApplication, userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void){
-            _ = Optimove.shared.application(application, continue: userActivity, restorationHandler: restorationHandler)
+    public static func application(_ application: UIApplication, userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+            return Optimove.shared.application(application, continue: userActivity, restorationHandler: restorationHandler)
     }
 
     @available(iOS 13.0, *)
     @objc(scene:session:options:)
-    static func scene(_ scene: UIScene, session: UISceneSession, options: UIScene.ConnectionOptions) {
+    public static func scene(_ scene: UIScene, session: UISceneSession, options: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
 
         // Deep links from cold starts
@@ -88,7 +88,7 @@ class OptimoveInitializer: NSObject {
 
     @available(iOS 13.0, *)
     @objc(scene:userActivity:)
-    static func scene(_ scene: UIScene, userActivity: NSUserActivity) {
+    public static func scene(_ scene: UIScene, userActivity: NSUserActivity) {
         Optimove.shared.scene(scene, continue: userActivity)
     }
 }

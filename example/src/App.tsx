@@ -1,12 +1,13 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Optimove from '@optimove-inc/react-native';
 import * as React from 'react';
+
 import { Alert } from 'react-native';
 import { HomeScreen } from './HomeScreen';
 import { InboxScreen } from './InboxScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import Optimove from '@optimove-inc/react-native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 function App() {
   initListeners();

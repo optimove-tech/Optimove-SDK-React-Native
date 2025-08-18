@@ -4,39 +4,19 @@ import type {
   InAppInboxUpdatedHandler,
   PushNotificationHandler,
 } from './handlers';
+import type { EmitterSubscription, NativeModule } from 'react-native';
 import type {
   InAppInboxItem,
   InAppInboxSummary,
   OptimoveInAppPresentationResult,
 } from './inApp';
+
 import {
-  NativeEventEmitter,
-  NativeModules,
-  Platform,
+  NativeEventEmitter
 } from 'react-native';
+import OptimoveReactNative from './NativeOptimoveReactNative';
 
-import type { EmitterSubscription } from 'react-native';
-
-const LINKING_ERROR =
-  `The package '@optimove-inc/react-native' doesn't seem to be linked. Make sure: \n\n` +
-  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
-  '- You rebuilt the app after installing the package\n' +
-  '- You are not using Expo Go\n';
-
-const OptimoveReactNative = NativeModules.OptimoveReactNative
-  ? NativeModules.OptimoveReactNative
-  : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    );
-
-const optimoveEmitter = new NativeEventEmitter(
-  NativeModules.OptimoveReactNative
-);
+const optimoveEmitter = new NativeEventEmitter(OptimoveReactNative as unknown as NativeModule);
 
 export default class Optimove {
   private static pushReceivedHandler: PushNotificationHandler;

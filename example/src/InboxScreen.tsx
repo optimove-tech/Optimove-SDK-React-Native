@@ -1,37 +1,69 @@
-import Optimove from '@optimove-inc/react-native';
-import * as React from 'react';
-import { useEffect, useState } from 'react';
 import {
   Alert,
   Button,
+  FlatList,
   Image,
   SafeAreaView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
-import { ExpandableListView } from 'react-native-expandable-listview';
-import type { InAppInboxItem, InAppInboxSummary } from 'src/inApp';
+import type { InAppInboxItem, InAppInboxSummary } from '../../src/inApp';
+import { useEffect, useRef, useState } from 'react';
+
+import Optimove from '@optimove-inc/react-native';
 
 export function InboxScreen({ navigation }: { navigation: any }) {
   const [inboxItems, setInAppInboxItems] = useState<InAppInboxItem[]>([]);
   const [summary, setInAppInboxSummary] = useState<InAppInboxSummary>();
+  const isMountedRef = useRef(true);
   console.debug('InboxScreen');
 
   useEffect(() => {
-    Optimove.inAppGetInboxItems().then(setInAppInboxItems);
-    Optimove.inAppGetInboxSummary().then(setInAppInboxSummary);
+    isMountedRef.current = true;
+
+    const setInboxItems = (items: InAppInboxItem[]) => {
+      if (isMountedRef.current) {
+        setInAppInboxItems(items);
+      }
+    };
+
+    const setSummary = (summaryData: InAppInboxSummary) => {
+      if (isMountedRef.current) {
+        setInAppInboxSummary(summaryData);
+      }
+    };
+
+    Optimove.inAppGetInboxItems().then(setInboxItems);
+    Optimove.inAppGetInboxSummary().then(setSummary);
+
     Optimove.setOnInboxUpdateHandler(() => {
-      Optimove.inAppGetInboxItems().then(setInAppInboxItems);
+      if (isMountedRef.current) {
+        Optimove.inAppGetInboxItems().then(setInboxItems);
+      }
     });
+
+    return () => {
+      isMountedRef.current = false;
+      Optimove.setOnInboxUpdateHandler(() => {});
+    };
   }, []);
 
   useEffect(() => {
+    const setSummary = (summaryData: InAppInboxSummary) => {
+      if (isMountedRef.current) {
+        setInAppInboxSummary(summaryData);
+      }
+    };
+
     navigation.setOptions({
       headerRight: () => (
         <Button
           onPress={() => {
-            Optimove.inAppGetInboxSummary().then(setInAppInboxSummary);
+            if (isMountedRef.current) {
+              Optimove.inAppGetInboxSummary().then(setSummary);
+            }
           }}
           title="Mark all read"
           color="#A7B8CC"
@@ -40,111 +72,87 @@ export function InboxScreen({ navigation }: { navigation: any }) {
     });
   }, [navigation]);
 
+  const renderInboxItem = ({ item }: { item: InAppInboxItem }) => (
+    <View style={styles.inboxCard}>
+      <View style={styles.cardHeader}>
+        <View style={styles.textContainer}>
+          <Text style={styles.titleText}>{item.title}</Text>
+          <Text style={styles.subtitleText}>{item.subtitle}</Text>
+        </View>
+        {item.imageUrl && (
+          <Image
+            style={styles.image}
+            source={{ uri: item.imageUrl }}
+          />
+        )}
+      </View>
+
+      <View style={styles.actionsContainer}>
+        <TouchableOpacity
+          style={[styles.actionButton, styles.viewButton]}
+          onPress={() => Optimove.inAppPresentInboxMessage(item)}
+        >
+          <Text style={styles.buttonText}>View</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[styles.actionButton, styles.viewDataButton]}
+          onPress={() =>
+            Alert.alert(
+              'Inbox data',
+              JSON.stringify(item.data),
+              [{ text: 'OK', style: 'cancel' }]
+            )
+          }
+        >
+          <Text style={styles.buttonText}>Data</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[styles.actionButton, styles.markReadButton]}
+          onPress={() => {
+            if (isMountedRef.current) {
+              Optimove.inAppMarkAsRead(item);
+              Optimove.inAppGetInboxSummary().then((summaryData) => {
+                if (isMountedRef.current) {
+                  setInAppInboxSummary(summaryData);
+                }
+              });
+            }
+          }}
+        >
+          <Text style={styles.buttonText}>Read</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={[styles.actionButton, styles.deleteButton]}
+          onPress={() => {
+            if (isMountedRef.current) {
+              Optimove.inAppDeleteMessageFromInbox(item);
+              Optimove.inAppGetInboxSummary().then((summaryData) => {
+                if (isMountedRef.current) {
+                  setInAppInboxSummary(summaryData);
+                }
+              });
+            }
+          }}
+        >
+          <Text style={styles.buttonText}>Delete</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        display: 'flex',
-        justifyContent: 'flex-start',
-        padding: 16,
-      }}
-    >
-      <View style={{ flex: 1 }}>
-        <ExpandableListView
-          innerItemContainerStyle={{ padding: 8 }}
-          itemContainerStyle={styles.container}
-          data={inboxItems.map((inboxItem) => {
-            return {
-              id: inboxItem.id.toString(),
-              categoryName: inboxItem.title,
-              customItem: (
-                <View style={styles.row}>
-                  <View style={styles.column}>
-                    <Text style={styles.titleText}>
-                      Title: {inboxItem.title}
-                    </Text>
-                    <Text style={styles.caption}>
-                      Subtitle: {inboxItem.subtitle}
-                    </Text>
-                  </View>
-                  {inboxItem.imageUrl && (
-                    <Image
-                      style={styles.image}
-                      source={{
-                        uri: inboxItem.imageUrl,
-                      }}
-                    />
-                  )}
-                </View>
-              ),
-              subCategory: [
-                {
-                  customInnerItem: (
-                    <Button
-                      onPress={() =>
-                        Alert.alert(
-                          'Inbox data',
-                          JSON.stringify(inboxItem.data),
-                          [{ text: 'OK', style: 'cancel' }]
-                        )
-                      }
-                      title="View data"
-                      color="#FF8566"
-                    />
-                  ),
-                  id: '1',
-                  name: '',
-                },
-                {
-                  id: '2',
-                  name: 'Sub Item 2',
-                  customInnerItem: (
-                    <Button
-                      onPress={() => {
-                        Optimove.inAppPresentInboxMessage(inboxItem);
-                      }}
-                      title="View"
-                      color="#FF8566"
-                    />
-                  ),
-                },
-
-                {
-                  id: '3',
-                  name: 'Sub Item 3',
-                  customInnerItem: (
-                    <Button
-                      onPress={() => {
-                        Optimove.inAppMarkAsRead(inboxItem);
-                        Optimove.inAppGetInboxSummary().then(
-                          setInAppInboxSummary
-                        );
-                      }}
-                      title="Mark read"
-                      color="#FF8566"
-                    />
-                  ),
-                },
-
-                {
-                  id: '4',
-                  name: 'Sub Item 4',
-                  customInnerItem: (
-                    <Button
-                      onPress={() => {
-                        Optimove.inAppDeleteMessageFromInbox(inboxItem);
-                        Optimove.inAppGetInboxSummary().then(
-                          setInAppInboxSummary
-                        );
-                      }}
-                      title="Delete"
-                      color="#FF8566"
-                    />
-                  ),
-                },
-              ],
-            };
-          })}
+    <SafeAreaView style={styles.container}>
+      <View style={styles.content}>
+        <FlatList
+          data={inboxItems}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={renderInboxItem}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.listContainer}
+          removeClippedSubviews={false}
         />
       </View>
       <View style={styles.footer}>
@@ -155,59 +163,92 @@ export function InboxScreen({ navigation }: { navigation: any }) {
 }
 
 const styles = StyleSheet.create({
-  column: {
-    flexDirection: 'column',
-  },
-  row: {
-    flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'space-between',
-  },
   container: {
-    flexDirection: 'row',
-    width: '100%',
-    borderRadius: 4,
-    margin: 8,
+    flex: 1,
+    padding: 16,
+  },
+  content: {
+    flex: 1,
+  },
+  listContainer: {
+    paddingBottom: 16,
+  },
+  inboxCard: {
     backgroundColor: '#A7B8CC',
+    borderRadius: 12,
+    marginBottom: 12,
+    padding: 16,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+  cardHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    marginBottom: 16,
   },
-  input: {
-    height: 40,
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#FF8566',
-  },
-  baseText: {
-    fontFamily: 'Cochin',
+  textContainer: {
+    flex: 1,
+    marginRight: 12,
   },
   titleText: {
-    fontSize: 12,
+    fontSize: 16,
     fontWeight: 'bold',
+    color: '#000',
+    marginBottom: 4,
   },
-  caption: {
-    fontSize: 12,
+  subtitleText: {
+    fontSize: 14,
+    color: '#333',
+    lineHeight: 20,
   },
-  separator: {
-    marginVertical: 8,
+  actionsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 8,
   },
-  horizontalSeparator: {
+  actionButton: {
+    flex: 1,
     marginHorizontal: 4,
-  },
-  scrollView: {
-    width: '100%',
-    marginHorizontal: 20,
-  },
-  footer: {
-    height: 40,
+    paddingVertical: 8,
+    paddingHorizontal: 8,
+    borderRadius: 6,
     alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: 36,
+  },
+  viewButton: {
+    backgroundColor: '#FF8566',
+  },
+  viewDataButton: {
+    backgroundColor: '#FFA726',
+  },
+  markReadButton: {
+    backgroundColor: '#FF7043',
+  },
+  deleteButton: {
+    backgroundColor: '#D84315',
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 12,
+    fontWeight: '600',
+    textAlign: 'center',
   },
   image: {
     width: 48,
     height: 48,
     borderRadius: 4,
+  },
+  footer: {
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

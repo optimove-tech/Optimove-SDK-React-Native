@@ -7,7 +7,6 @@ import androidx.annotation.Nullable;
 
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableArray;
@@ -29,7 +28,7 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 @ReactModule(name = OptimoveReactNativeModule.NAME)
-public class OptimoveReactNativeModule extends ReactContextBaseJavaModule {
+public class OptimoveReactNativeModule extends NativeOptimoveReactNativeSpec {
 
   public static final String NAME = "OptimoveReactNative";
   private static final String TAG = OptimoveReactNativeModule.class.getName();
@@ -50,27 +49,27 @@ public class OptimoveReactNativeModule extends ReactContextBaseJavaModule {
     return NAME;
   }
 
-  @ReactMethod
+  @Override
   public void setUserId(String userId) {
     Optimove.getInstance().setUserId(userId);
   }
 
-  @ReactMethod
+  @Override
   public void setUserEmail(String email) {
     Optimove.getInstance().setUserEmail(email);
   }
 
-  @ReactMethod
+  @Override
   public void registerUser(String userId, String email) {
     Optimove.getInstance().registerUser(userId, email);
   }
 
-  @ReactMethod
+  @Override
   public void reportScreenVisit(@NonNull String screenName, @Nullable String screenCategory) {
     Optimove.getInstance().reportScreenVisit(screenName, screenCategory);
   }
 
-  @ReactMethod
+  @Override
   public void reportEvent(String event, @Nullable ReadableMap parameters) {
     if (parameters == null) {
       Optimove.getInstance().reportEvent(event);
@@ -80,33 +79,34 @@ public class OptimoveReactNativeModule extends ReactContextBaseJavaModule {
     Optimove.getInstance().reportEvent(event, parameters.toHashMap());
   }
 
-  @ReactMethod
+  @Override
   public void getVisitorId(Promise promise) {
     promise.resolve(Optimove.getInstance().getVisitorId());
   }
 
-  @ReactMethod
+  @Override
   public void signOutUser() {
     Optimove.getInstance().signOutUser();
   }
 
-  @ReactMethod
+  @Override
   public void pushRequestDeviceToken() {
     Optimove.getInstance().pushRequestDeviceToken();
   }
 
-  @ReactMethod
+  @Override
   public void pushUnregister() {
     Optimove.getInstance().pushUnregister();
   }
 
-  @ReactMethod
-  public void inAppDeleteMessageWithIdFromInbox(Integer id, Promise promise) {
+  @Override
+  public void inAppDeleteMessageWithIdFromInbox(double id, Promise promise) {
     boolean deleted = false;
+    int messageId = (int) id;
 
     List<InAppInboxItem> items = OptimoveInApp.getInstance().getInboxItems();
     for (InAppInboxItem item : items) {
-      if (id == item.getId()) {
+      if (messageId == item.getId()) {
         deleted = OptimoveInApp.getInstance().deleteMessageFromInbox(item);
         break;
       }
@@ -115,14 +115,15 @@ public class OptimoveReactNativeModule extends ReactContextBaseJavaModule {
     promise.resolve(deleted);
   }
 
-  @ReactMethod
-  public void inAppPresentItemWithId(Integer id, Promise promise) {
+  @Override
+  public void inAppPresentItemWithId(double id, Promise promise) {
     List<InAppInboxItem> items = OptimoveInApp.getInstance().getInboxItems();
+    int messageId = (int) id;
 
     OptimoveInApp.InboxMessagePresentationResult presentationResult = OptimoveInApp.InboxMessagePresentationResult.FAILED;
 
     for (InAppInboxItem item : items) {
-      if (item.getId() == id) {
+      if (item.getId() == messageId) {
         presentationResult = OptimoveInApp.getInstance().presentInboxMessage(item);
         break;
       }
@@ -141,12 +142,13 @@ public class OptimoveReactNativeModule extends ReactContextBaseJavaModule {
     }
   }
 
-  @ReactMethod
-  public void inAppMarkAsReadItemWithId(Integer id, Promise promise) {
+  @Override
+  public void inAppMarkAsReadItemWithId(double id, Promise promise) {
     List<InAppInboxItem> items = OptimoveInApp.getInstance().getInboxItems();
+    int messageId = (int) id;
 
     for (InAppInboxItem item : items) {
-      if (item.getId() != id) {
+      if (item.getId() != messageId) {
         continue;
       }
 
@@ -157,7 +159,7 @@ public class OptimoveReactNativeModule extends ReactContextBaseJavaModule {
     promise.resolve(false);
   }
 
-  @ReactMethod
+  @Override
   public void inAppGetInboxItems(Promise promise) {
     SimpleDateFormat formatter;
     formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US);
@@ -224,18 +226,17 @@ public class OptimoveReactNativeModule extends ReactContextBaseJavaModule {
     return mapped;
   }
 
-  @ReactMethod
+  @Override
   public void inAppMarkAllInboxItemsAsRead(Promise promise) {
     promise.resolve(OptimoveInApp.getInstance().markAllInboxItemsAsRead());
   }
 
-  @ReactMethod
+  @Override
   public void inAppUpdateConsent(boolean consentGiven) {
     OptimoveInApp.getInstance().updateConsentForUser(consentGiven);
   }
 
-
-  @ReactMethod
+  @Override
   public void inAppGetInboxSummary(Promise promise) {
     OptimoveInApp.getInstance().getInboxSummaryAsync(summary -> {
       if (summary == null) {
@@ -252,16 +253,11 @@ public class OptimoveReactNativeModule extends ReactContextBaseJavaModule {
     });
   }
 
-  @ReactMethod
-  public void startListeningToEvent(String event) {
-    OptimoveReactNativeEmitter.getInstance().addListener(event);
-  }
-
-  @ReactMethod
+  @Override
   public void addListener(String eventName) {
     OptimoveReactNativeEmitter.getInstance().addListener(eventName);
   }
 
-  @ReactMethod
-  public void removeListeners(Integer count) {}
+  @Override
+  public void removeListeners(double count) {}
 }
