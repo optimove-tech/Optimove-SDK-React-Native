@@ -1,13 +1,13 @@
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
-#import <OptimoveReactNative/OptimovReactNative-Bridging.h>
+#import <OptimoveReactNative/OptimoveInitializer.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  
+
   [OptimoveInitializer initialize:@"<YOUR OPTIMOVE CREDENTIALS>" optimobileCredentials:@"<YOUR OPTIMOBILE CREDENTIALS>" inAppConsentStrategy:@"auto-enroll|in-app-disabled|explicit-by-user" enableDeferredDeepLinking:true];
 
   self.moduleName = @"OptimoveReactNativeExample";
