@@ -66,7 +66,7 @@ repositories {
 
 dependencies {
   implementation "com.facebook.react:react-android"
-  api 'com.optimove.android:optimove-android:7.1.1'
+  api 'com.optimove.android:optimove-android:7.7.0'
 }
 
 react {

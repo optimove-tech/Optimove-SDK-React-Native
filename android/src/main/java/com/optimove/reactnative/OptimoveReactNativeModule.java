@@ -136,6 +136,9 @@ public class OptimoveReactNativeModule extends NativeOptimoveReactNativeSpec {
       case FAILED_EXPIRED:
         promise.resolve(1);
         break;
+      case PAUSED:
+        promise.resolve(3);
+        break;
       default:
         promise.resolve(2);
         break;
