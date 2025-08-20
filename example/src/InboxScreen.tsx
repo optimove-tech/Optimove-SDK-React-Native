@@ -9,10 +9,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import type { InAppInboxItem, InAppInboxSummary } from '../../src/inApp';
 import { useEffect, useRef, useState } from 'react';
 
-import Optimove from '@optimove-inc/react-native';
+import Optimove, { type InAppInboxItem, type InAppInboxSummary } from '@optimove-inc/react-native';
 
 export function InboxScreen({ navigation }: { navigation: any }) {
   const [inboxItems, setInAppInboxItems] = useState<InAppInboxItem[]>([]);
