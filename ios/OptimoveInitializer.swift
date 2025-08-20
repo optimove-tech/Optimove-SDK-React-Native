@@ -4,7 +4,7 @@ import OptimoveSDK
 @objc(OptimoveInitializer)
 public class OptimoveInitializer: NSObject {
 
-    private static let sdkVersion = "2.1.0"
+    private static let sdkVersion = "3.0.0"
     private static let sdkType = 9
     private static let runtimeType = 7
     private static let runtimeVersion = "Unknown";
