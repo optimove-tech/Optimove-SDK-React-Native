@@ -11,12 +11,36 @@ import type {
   OptimoveInAppPresentationResult,
 } from './inApp';
 
-import {
-  NativeEventEmitter
-} from 'react-native';
+import { NativeEventEmitter } from 'react-native';
 import OptimoveReactNative from './NativeOptimoveReactNative';
 
-const optimoveEmitter = new NativeEventEmitter(OptimoveReactNative as unknown as NativeModule);
+export type {
+  InAppInboxItem,
+  InAppInboxSummary,
+  InAppButtonPress,
+} from './inApp';
+
+export { OptimoveInAppPresentationResult } from './inApp';
+
+export type { PushNotification } from './push';
+
+export type {
+  DeepLinkHandler,
+  InAppDeepLinkHandler,
+  InAppInboxUpdatedHandler,
+  PushNotificationHandler,
+} from './handlers';
+
+export type {
+  DeepLink,
+  DeepLinkContent,
+  NonMatchedResolution,
+  MatchedResolution,
+} from './ddl';
+
+const optimoveEmitter = new NativeEventEmitter(
+  OptimoveReactNative as unknown as NativeModule
+);
 
 export default class Optimove {
   private static pushReceivedHandler: PushNotificationHandler;
