@@ -15,4 +15,5 @@ For a detailed breakdown of the SDK’s capabilities, refer to the **[API Refere
 
 ## License
 
-Optimove React Native SDK is available under the [MIT license](LICENSE).
+Optimove React Native SDK is available under the [MIT license](LICENSE).....
+   
