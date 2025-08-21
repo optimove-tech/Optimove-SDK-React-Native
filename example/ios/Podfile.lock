@@ -8,7 +8,7 @@ PODS:
   - hermes-engine (0.76.9):
     - hermes-engine/Pre-built (= 0.76.9)
   - hermes-engine/Pre-built (0.76.9)
-  - optimove-react-native (2.1.0):
+  - optimove-react-native (3.0.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -2093,7 +2093,7 @@ SPEC CHECKSUMS:
   fmt: 01b82d4ca6470831d1cc0852a1af644be019e8f6
   glog: 08b301085f15bcbb6ff8632a8ebaf239aae04e6a
   hermes-engine: 9e868dc7be781364296d6ee2f56d0c1a9ef0bb11
-  optimove-react-native: 6c19f62c2a9c6f077e50fa56c96fad8924034871
+  optimove-react-native: 9e2977289914de20b25a29caca03d48eb7dc64eb
   OptimoveCore: f2ec8ebbe22161cbe8e5460bfbe9c603342874dd
   OptimoveNotificationServiceExtension: cd63f4293df0fd8b147f2089fd283c3d3ee3fa63
   OptimoveSDK: 3b835157138b245ea5f4a093ac26edd16c3de887
