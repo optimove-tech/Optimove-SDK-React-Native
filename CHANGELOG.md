@@ -1,5 +1,28 @@
 # Changelog
 
+## 3.0.0
+
+- [Breaking]
+  - Requires React Native ≥ 0.76 and New Architecture enabled.
+  - iOS: AppDelegate import changed.
+    - Old: `#import <OptimoveReactNative/OptimovReactNative-Bridging.h>`
+    - New: `#import <OptimoveReactNative/OptimoveInitializer.h>`
+- Android: updated Optimove Android SDK to `7.7.0`.
+  - Fix duplicated events sent when multiple immediate events reported
+- iOS: updated Optimove iOS SDK to `~> 6.2.3`:
+  - Add Privacy Manifest
+  - Add support for coexistence with other SDKs that swizzle push related app delegate methods
+  - Fix invalidating sessions on NetworkClientImpl deinit
+  - Fix same immediate events sent multiple times
+  - Fix in app presentation issue in orientation change
+  - Fix Xcode 16 OptimoveSDK warnings
+  - Fix deeplink decoding issue
+  - Remove SetUserAgent event
+- In-app: `Optimove.inAppPresentInboxMessage` can now return `Paused`.
+- DX: common types are now exported from the package root for simpler imports (e.g., `import { OptimoveInAppPresentationResult } from '@optimove-inc/react-native'`).
+
+Internal: migrated to Yarn 3, ESLint 9, turbo; updated example app to RN `0.76.9`.
+
 ## 2.1.0
 
 - Updated the iOS SDK to version `~> 6.2.3`:
