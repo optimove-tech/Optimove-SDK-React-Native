@@ -8,6 +8,7 @@
 	<array>
 		<string>applinks:optireactnative.lnk.click</string>
 		<string>applinks:optimovereactnative.lnk.click</string>
+		<string>applinks:reactnativeqa.lnk.click</string>
 	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
