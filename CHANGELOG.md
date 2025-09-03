@@ -5,7 +5,7 @@
 - [Breaking]
   - Requires React Native ≥ 0.76 and New Architecture enabled.
   - iOS: AppDelegate import changed.
-    - Old: `#import <OptimoveReactNative/OptimovReactNative-Bridging.h>`
+    - Old: `#import <OptimoveReactNative/OptimoveReactNative-Bridging.h>`
     - New: `#import <OptimoveReactNative/OptimoveInitializer.h>`
 - Android: updated Optimove Android SDK to `7.7.0`.
   - Fix duplicated events sent when multiple immediate events reported
