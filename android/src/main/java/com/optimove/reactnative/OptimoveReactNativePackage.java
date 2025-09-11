@@ -1,28 +1,50 @@
 package com.optimove.reactnative;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
-import com.facebook.react.ReactPackage;
+import com.facebook.react.TurboReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.uimanager.ViewManager;
+import com.facebook.react.module.model.ReactModuleInfo;
+import com.facebook.react.module.model.ReactModuleInfoProvider;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-public class OptimoveReactNativePackage implements ReactPackage {
-  @NonNull
+public class OptimoveReactNativePackage extends TurboReactPackage {
+
+  @Nullable
   @Override
-  public List<NativeModule> createNativeModules(@NonNull ReactApplicationContext reactContext) {
-    List<NativeModule> modules = new ArrayList<>();
-    modules.add(new OptimoveReactNativeModule(reactContext));
-    return modules;
+  public NativeModule getModule(@NonNull String name, @NonNull ReactApplicationContext reactContext) {
+    if (name.equals(OptimoveReactNativeModule.NAME)) {
+      return new OptimoveReactNativeModule(reactContext);
+    } else {
+      return null;
+    }
   }
 
   @NonNull
   @Override
-  public List<ViewManager> createViewManagers(@NonNull ReactApplicationContext reactContext) {
-    return Collections.emptyList();
+  public ReactModuleInfoProvider getReactModuleInfoProvider() {
+    return new ReactModuleInfoProvider() {
+      @NonNull
+      @Override
+      public Map<String, ReactModuleInfo> getReactModuleInfos() {
+        final Map<String, ReactModuleInfo> moduleInfos = new HashMap<>();
+        moduleInfos.put(
+          OptimoveReactNativeModule.NAME,
+          new ReactModuleInfo(
+            OptimoveReactNativeModule.NAME,
+            OptimoveReactNativeModule.NAME,
+            false, // canOverrideExistingModule
+            false, // needsEagerInit
+            false, // isCxxModule
+            true   // isTurboModule
+          )
+        );
+        return moduleInfos;
+      }
+    };
   }
 }

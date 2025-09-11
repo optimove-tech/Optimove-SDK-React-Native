@@ -1,5 +1,6 @@
 import Foundation
 import OptimoveSDK
+import React
 
 @objc(OptimoveReactNative)
 class OptimoveReactNative: RCTEventEmitter {
@@ -9,13 +10,20 @@ class OptimoveReactNative: RCTEventEmitter {
         OptimoveReactNativeEmitter.shared.setEmitter(emitter: self)
     }
 
+    override func startObserving() {
+        OptimoveReactNativeEmitter.shared.setEmitter(emitter: self)
+    }
+
     override func addListener(_ eventName: String!) {
+        if OptimoveReactNativeEmitter.shared.emitter == nil {
+            OptimoveReactNativeEmitter.shared.setEmitter(emitter: self)
+        }
         super.addListener(eventName)
         OptimoveReactNativeEmitter.shared.addListener(eventName: eventName)
     }
 
     @objc
-    func getVisitorId(_ resolve: RCTPromiseResolveBlock, rejecter reject: RCTPromiseRejectBlock) {
+    func getVisitorId(_ resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
         resolve(Optimove.getVisitorID())
     }
 
@@ -50,7 +58,7 @@ class OptimoveReactNative: RCTEventEmitter {
     }
 
     @objc
-    func reportEvent(_ event: String, parameters: NSDictionary? = nil) {
+    func reportEvent(_ event: String, parameters: NSDictionary?) {
         if parameters == nil {
             Optimove.reportEvent(name: event)
             return
@@ -60,17 +68,18 @@ class OptimoveReactNative: RCTEventEmitter {
     }
 
     @objc
-    func reportScreenVisit(_ title: String, screenCategory category: String? = nil) {
-        Optimove.reportScreenVisit(screenTitle: title, screenCategory: category)
+    func reportScreenVisit(_ screenName: String, screenCategory: String?) {
+        Optimove.reportScreenVisit(screenTitle: screenName, screenCategory: screenCategory)
     }
 
     @objc
-    func inAppDeleteMessageWithIdFromInbox(_ id: Int, resolver resolve: RCTPromiseResolveBlock,
-                                           rejecter reject: RCTPromiseRejectBlock) {
+    func inAppDeleteMessageWithIdFromInbox(_ id: Double, resolve: @escaping RCTPromiseResolveBlock,
+                                           reject: @escaping RCTPromiseRejectBlock) {
         let inboxItems: [InAppInboxItem] = OptimoveInApp.getInboxItems()
+        let itemId = Int(id)
 
         for item in inboxItems {
-            if item.id == id {
+            if item.id == itemId {
                 resolve(OptimoveInApp.deleteMessageFromInbox(item: item))
                 return
             }
@@ -80,13 +89,14 @@ class OptimoveReactNative: RCTEventEmitter {
     }
 
     @objc
-    func inAppPresentItemWithId(_ id: Int, resolver resolve: RCTPromiseResolveBlock,
-                                rejecter reject: RCTPromiseRejectBlock) {
+    func inAppPresentItemWithId(_ id: Double, resolve: @escaping RCTPromiseResolveBlock,
+                                reject: @escaping RCTPromiseRejectBlock) {
         let inboxItems: [InAppInboxItem] = OptimoveInApp.getInboxItems()
         var presentationResult: InAppMessagePresentationResult = .FAILED
+        let itemId = Int(id)
 
         for item in inboxItems {
-            if item.id == id {
+            if item.id == itemId {
                 presentationResult = OptimoveInApp.presentInboxMessage(item: item)
                 break
             }
@@ -99,16 +109,19 @@ class OptimoveReactNative: RCTEventEmitter {
             resolve(1)
         case .FAILED:
             resolve(2)
+        case .PAUSED:
+            resolve(3)
         }
     }
 
     @objc
-    func inAppMarkAsReadItemWithId(_ id: Int, resolver resolve: RCTPromiseResolveBlock,
-                                rejecter reject: RCTPromiseRejectBlock) {
+    func inAppMarkAsReadItemWithId(_ id: Double, resolve: @escaping RCTPromiseResolveBlock,
+                                reject: @escaping RCTPromiseRejectBlock) {
         let inboxItems: [InAppInboxItem] = OptimoveInApp.getInboxItems()
+        let itemId = Int(id)
 
         for item in inboxItems {
-            if item.id == id {
+            if item.id == itemId {
                 resolve(OptimoveInApp.markAsRead(item: item))
                 return
             }
@@ -118,7 +131,7 @@ class OptimoveReactNative: RCTEventEmitter {
     }
 
     @objc
-    func inAppGetInboxItems(_ resolve: RCTPromiseResolveBlock, rejecter reject: RCTPromiseRejectBlock) {
+    func inAppGetInboxItems(_ resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
         let inboxItems: [InAppInboxItem] = OptimoveInApp.getInboxItems()
 
         var inboxItemsMaps: [[String: Any?]] = []
@@ -151,12 +164,12 @@ class OptimoveReactNative: RCTEventEmitter {
     }
 
     @objc
-    func inAppMarkAllInboxItemsAsRead(_ resolve: RCTPromiseResolveBlock, rejecter reject: RCTPromiseRejectBlock) {
+    func inAppMarkAllInboxItemsAsRead(_ resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
         resolve(OptimoveInApp.markAllInboxItemsAsRead())
     }
 
     @objc
-    func inAppGetInboxSummary(_ resolve: @escaping RCTPromiseResolveBlock, rejecter reject: RCTPromiseRejectBlock) {
+    func inAppGetInboxSummary(_ resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
         OptimoveInApp.getInboxSummaryAsync(inboxSummaryBlock: { inAppInboxSummary in
             var inAppInboxSummaryMap = [String: Any?]()
             inAppInboxSummaryMap["totalCount"] = inAppInboxSummary?.totalCount
@@ -165,7 +178,20 @@ class OptimoveReactNative: RCTEventEmitter {
         })
     }
 
+    @objc
+    override func removeListeners(_ count: Double) {
+        // Implementation for removeListeners - required by the protocol
+        for _ in 0..<Int(count) {
+            super.removeListeners(1)
+        }
+    }
+
     override func supportedEvents() -> [String] {
         return EventTypes.allCases.map { $0.rawValue }
+    }
+
+    // MARK: - TurboModule
+    override static func moduleName() -> String! {
+        return "OptimoveReactNative"
     }
 }

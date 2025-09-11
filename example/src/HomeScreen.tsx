@@ -1,15 +1,15 @@
-import * as React from 'react';
 import {
-  StyleSheet,
-  View,
-  TextInput,
-  SafeAreaView,
-  Text,
   Button,
+  SafeAreaView,
   ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
 } from 'react-native';
-import Optimove from '@optimove-inc/react-native';
 import { useEffect, useState } from 'react';
+
+import Optimove from '@optimove-inc/react-native';
 
 const Separator = () => <View style={styles.separator} />;
 

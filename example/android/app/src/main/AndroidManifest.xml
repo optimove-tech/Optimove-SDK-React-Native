@@ -27,7 +27,7 @@
             <category android:name="android.intent.category.BROWSABLE" />
             <!-- Specify which URIs should be matched. Note, domain should be .lnk.click -->
             <data android:scheme="https"/>
-            <data android:host="optireactnative.lnk.click"/>
+            <data android:host="reactnativeqa.lnk.click"/>
         </intent-filter>
       </activity>
     </application>
