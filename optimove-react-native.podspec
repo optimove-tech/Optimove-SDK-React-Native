@@ -14,7 +14,6 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/optimove-tech/Optimove-SDK-React-Native/.git", :tag => "#{s.version}" }
   s.header_dir   = "OptimoveReactNative"
   s.source_files = "ios/**/*.{h,m,mm,cpp,swift}"
-  s.public_header_files = "ios/OptimoveInitializer.h"
 
   s.dependency 'OptimoveCore', '~> 6.2.3'
   s.dependency 'OptimoveSDK', '~> 6.2.3'
