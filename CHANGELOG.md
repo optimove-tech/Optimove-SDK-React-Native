@@ -1,5 +1,24 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+- iOS: Fixed duplicate interface definition error for `OptimoveInitializer` when building with React Native 0.79.6+
+  - Removed redundant `OptimoveInitializer.h` header file (Swift's `@objc` attribute auto-generates the interface)
+  - Updated AppDelegate import to use auto-generated Swift header
+  - **Migration**: Update your AppDelegate.mm import:
+    ```objective-c
+    // Old (v3.0.0):
+    #import <OptimoveReactNative/OptimoveInitializer.h>
+    
+    // New:
+    #if __has_include(<OptimoveReactNative/OptimoveReactNative-Swift.h>)
+    #import <OptimoveReactNative/OptimoveReactNative-Swift.h>
+    #elif __has_include("OptimoveReactNative-Swift.h")
+    #import "OptimoveReactNative-Swift.h"
+    #endif
+    ```
+
 ## 3.0.0
 
 - [Breaking]
