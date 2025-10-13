@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.0.1
+
+- iOS: Fixed potential duplicate interface issues in React Native 0.79+ by preventing Swift-generated header from being publicly exposed
+
 ## 3.0.0
 
 - [Breaking]
