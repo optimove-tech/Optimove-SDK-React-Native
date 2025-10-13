@@ -31,10 +31,10 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - OptimoveCore (6.2.4)
-  - OptimoveNotificationServiceExtension (6.2.4)
-  - OptimoveSDK (6.2.4):
-    - OptimoveCore (= 6.2.4)
+  - OptimoveCore (6.2.6)
+  - OptimoveNotificationServiceExtension (6.2.6)
+  - OptimoveSDK (6.2.6):
+    - OptimoveCore (= 6.2.6)
   - RCT-Folly (2024.10.14.00):
     - boost
     - DoubleConversion
@@ -2093,10 +2093,10 @@ SPEC CHECKSUMS:
   fmt: 01b82d4ca6470831d1cc0852a1af644be019e8f6
   glog: 08b301085f15bcbb6ff8632a8ebaf239aae04e6a
   hermes-engine: 9e868dc7be781364296d6ee2f56d0c1a9ef0bb11
-  optimove-react-native: 9e2977289914de20b25a29caca03d48eb7dc64eb
-  OptimoveCore: f2ec8ebbe22161cbe8e5460bfbe9c603342874dd
-  OptimoveNotificationServiceExtension: cd63f4293df0fd8b147f2089fd283c3d3ee3fa63
-  OptimoveSDK: 3b835157138b245ea5f4a093ac26edd16c3de887
+  optimove-react-native: 762a6292690db2ac7d48f6912db7f28f6a818d03
+  OptimoveCore: 4ef53a9d78098c24d57b0f83665cd54206aba40d
+  OptimoveNotificationServiceExtension: c34a2dda2c135366ceaecde695c310a8f7f4e4c9
+  OptimoveSDK: 0513296d50faa3cf5679c81b70563e322bc5fdd3
   RCT-Folly: ea9d9256ba7f9322ef911169a9f696e5857b9e17
   RCTDeprecation: ebe712bb05077934b16c6bf25228bdec34b64f83
   RCTRequired: ca91e5dd26b64f577b528044c962baf171c6b716
