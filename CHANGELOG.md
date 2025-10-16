@@ -2,7 +2,7 @@
 
 ## 3.0.1
 
-- iOS: Fixed potential duplicate interface issues in React Native 0.79+ by preventing Swift-generated header from being publicly exposed
+- iOS: Fixed duplicate interface definition error for `OptimoveInitializer` when building with React Native 0.79.6+
 
 ## 3.0.0
 
