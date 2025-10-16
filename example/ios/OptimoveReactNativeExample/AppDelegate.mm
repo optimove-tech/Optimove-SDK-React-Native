@@ -1,7 +1,7 @@
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
-#import <OptimoveReactNative/OptimoveInitializer.h>
+#import <OptimoveReactNative/OptimoveReactNative-Swift.h>
 
 @implementation AppDelegate
 

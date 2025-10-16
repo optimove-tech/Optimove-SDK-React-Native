@@ -13,9 +13,9 @@
 		503326E2293E3C0D0082876B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503326E1293E3C0D0082876B /* NotificationService.swift */; };
 		503326E6293E3C0D0082876B /* NotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 503326DF293E3C0C0082876B /* NotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		87AB1F7F83D62688BDD35572 /* libPods-OptimoveReactNativeExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE3834C0085DE6F24C9C0EBA /* libPods-OptimoveReactNativeExample.a */; };
 		9CAC5BED9F0FA1630A0A9E2E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6B92505C6B05C8987626E6D7 /* PrivacyInfo.xcprivacy */; };
-		EE7C32DCDE9F78AF318D1634 /* libPods-NotificationServiceExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6174B4D33552C946B0B558BC /* libPods-NotificationServiceExtension.a */; };
+		B667FF59D4A8437E25545CAA /* Pods_OptimoveReactNativeExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6DC49E4B85EFD4302D6CFAE /* Pods_OptimoveReactNativeExample.framework */; };
+		FE887894F68067C9D62465D1 /* Pods_NotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDEEEA0FE491B88889288A63 /* Pods_NotificationServiceExtension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,14 +56,14 @@
 		503326E3293E3C0D0082876B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		503326EB293E522E0082876B /* NotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationServiceExtension.entitlements; sourceTree = "<group>"; };
 		503326FA29466BB70082876B /* OptimoveReactNativeExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OptimoveReactNativeExample-Bridging-Header.h"; sourceTree = "<group>"; };
-		6174B4D33552C946B0B558BC /* libPods-NotificationServiceExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NotificationServiceExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B92505C6B05C8987626E6D7 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = OptimoveReactNativeExample/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = OptimoveReactNativeExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B6DC49E4B85EFD4302D6CFAE /* Pods_OptimoveReactNativeExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OptimoveReactNativeExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9E5F0F35F54D8FF53E76D64 /* Pods-OptimoveReactNativeExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OptimoveReactNativeExample.release.xcconfig"; path = "Target Support Files/Pods-OptimoveReactNativeExample/Pods-OptimoveReactNativeExample.release.xcconfig"; sourceTree = "<group>"; };
+		BDEEEA0FE491B88889288A63 /* Pods_NotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE472B03CC84229AF997CA8E /* Pods-OptimoveReactNativeExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OptimoveReactNativeExample.debug.xcconfig"; path = "Target Support Files/Pods-OptimoveReactNativeExample/Pods-OptimoveReactNativeExample.debug.xcconfig"; sourceTree = "<group>"; };
 		BF4EC9CB7275D5CB9A30D8B7 /* Pods-NotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-NotificationServiceExtension/Pods-NotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		EE3834C0085DE6F24C9C0EBA /* libPods-OptimoveReactNativeExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-OptimoveReactNativeExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87AB1F7F83D62688BDD35572 /* libPods-OptimoveReactNativeExample.a in Frameworks */,
+				B667FF59D4A8437E25545CAA /* Pods_OptimoveReactNativeExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE7C32DCDE9F78AF318D1634 /* libPods-NotificationServiceExtension.a in Frameworks */,
+				FE887894F68067C9D62465D1 /* Pods_NotificationServiceExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,8 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				6174B4D33552C946B0B558BC /* libPods-NotificationServiceExtension.a */,
-				EE3834C0085DE6F24C9C0EBA /* libPods-OptimoveReactNativeExample.a */,
+				BDEEEA0FE491B88889288A63 /* Pods_NotificationServiceExtension.framework */,
+				B6DC49E4B85EFD4302D6CFAE /* Pods_OptimoveReactNativeExample.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -759,6 +759,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD = "";
 				LDPLUSPLUS = "";
@@ -834,6 +845,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework/Headers/react/nativemodule/core",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon-Samples/ReactCommon_Samples.framework/Headers/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-Fabric/React_Fabric.framework/Headers/react/renderer/components/view/platform/cxx",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD = "";
 				LDPLUSPLUS = "";
