@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.1
+
+- iOS: Fixed duplicate interface definition error for `OptimoveInitializer` when building with React Native 0.79.6+
+  - **Note**: The correct objc AppDelegate import is `#import <OptimoveReactNative/OptimoveReactNative-Swift.h>` (not `<OptimoveReactNative/OptimoveInitializer.h>` as stated in 3.0.0)
+
 ## 3.0.0
 
 - [Breaking]
