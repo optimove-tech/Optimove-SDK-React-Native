@@ -5,14 +5,30 @@
 
 # Integration Guide
 
-This repository contains the Optimove React Native SDK. However, the documentation has moved to a central location where you can find comprehensive guides for all Optimove SDKs.  
+This repository contains the Optimove React Native SDK. However, the documentation has moved to a central location where you can find comprehensive guides for all Optimove SDKs.
 
-### Getting Started  
-For full integration instructions, follow our **[Getting Started Guide](https://developer.optimove.com/docs/optimobile-getting-started)**. This step-by-step guide walks you through the integration process, with checkpoints to ensure everything is set up and working correctly.  
+### Getting Started
 
-### API Reference  
-For a detailed breakdown of the SDK’s capabilities, refer to the **[API Reference](https://developer.optimove.com/reference/api-reference-optimobile-sdk)**. This guide covers SDK initialization, analytics, event tracking, push notifications, in-app messaging, and deferred deep linking across all supported platforms.  
+For full integration instructions, follow our **[Getting Started Guide](https://developer.optimove.com/docs/optimobile-getting-started)**. This step-by-step guide walks you through the integration process, with checkpoints to ensure everything is set up and working correctly.
+
+### API Reference
+
+For a detailed breakdown of the SDK’s capabilities, refer to the **[API Reference](https://developer.optimove.com/reference/api-reference-optimobile-sdk)**. This guide covers SDK initialization, analytics, event tracking, push notifications, in-app messaging, and deferred deep linking across all supported platforms.
 
 ## License
 
 Optimove React Native SDK is available under the [MIT license](LICENSE).
+
+## To run example app
+
+1. yarn install — installs root deps
+2. yarn prepare — builds the SDK into /lib
+3. cd example && yarn install — install app deps
+4. yarn start — start Metro bundler, keep it running
+5. cd example && yarn android or yarn ios
+
+## To see changes
+
+- example app changes: picked by Metro
+- RN src changes: `yarn prepare` from root
+- Native changes: `yarn android` from example

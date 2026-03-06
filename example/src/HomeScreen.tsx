@@ -60,7 +60,7 @@ export function HomeScreen({ navigation }: { navigation: any }) {
           <Button
             onPress={() => {
               Optimove.setUserId(userIdText);
-              Optimove.getVisitorId().then(setVisitorId);
+              setTimeout(() => Optimove.getVisitorId().then(setVisitorId), 0);
             }}
             title="Set user id"
             color="#FF8566"
