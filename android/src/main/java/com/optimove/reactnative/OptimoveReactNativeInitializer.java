@@ -29,6 +29,10 @@ public class OptimoveReactNativeInitializer {
       config.enableInAppMessaging(optimoveReactNativeConfig.getInAppConsentStrategy());
     }
 
+    if (optimoveReactNativeConfig.getEmbeddedMessagingCredentials() != null) {
+      config.enableEmbeddedMessaging(optimoveReactNativeConfig.getEmbeddedMessagingCredentials());
+    }
+
     if (optimoveReactNativeConfig.getDeeplinkEnabled()) {
       config.enableDeepLinking((innerContext, resolution, link, data) -> OptimoveReactNativeEmitter.getInstance().emit(new DDLEvent(resolution, link, data)));
     }

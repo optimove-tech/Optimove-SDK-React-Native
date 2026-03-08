@@ -15,6 +15,10 @@ import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.module.annotations.ReactModule;
 import com.optimove.android.Optimove;
+import com.optimove.android.embeddedmessaging.Container;
+import com.optimove.android.embeddedmessaging.ContainerRequestOptions;
+import com.optimove.android.embeddedmessaging.EmbeddedMessage;
+import com.optimove.android.embeddedmessaging.OptimoveEmbeddedMessaging;
 import com.optimove.android.optimobile.InAppInboxItem;
 import com.optimove.android.optimobile.OptimoveInApp;
 
@@ -25,6 +29,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.TimeZone;
 
 @ReactModule(name = OptimoveReactNativeModule.NAME)
@@ -254,6 +259,79 @@ public class OptimoveReactNativeModule extends NativeOptimoveReactNativeSpec {
 
       promise.resolve(mapped);
     });
+  }
+
+  @Override
+  public void embeddedMessagingGetMessages(ReadableArray containers, Promise promise) {
+    ContainerRequestOptions[] options = new ContainerRequestOptions[containers.size()];
+    for (int i = 0; i < containers.size(); i++) {
+      ReadableMap container = containers.getMap(i);
+      options[i] = new ContainerRequestOptions(
+        container.getString("containerId"),
+        container.getInt("limit")
+      );
+    }
+
+    OptimoveEmbeddedMessaging.getInstance().getMessagesAsync(options, (result, response) -> {
+      if (result != OptimoveEmbeddedMessaging.ResultType.SUCCESS || response == null) {
+        promise.reject(result.name(), "Failed to get embedded messages");
+        return;
+      }
+
+      SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US);
+      formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+      WritableMap resultMap = new WritableNativeMap();
+      for (Map.Entry<String, Container> entry : response.getContainersMap().entrySet()) {
+        String containerId = entry.getKey();
+        WritableArray messagesArray = new WritableNativeArray();
+        EmbeddedMessage[] messages = entry.getValue().getMessages();
+        if (messages != null) {
+          for (EmbeddedMessage msg : messages) {
+            messagesArray.pushMap(mapEmbeddedMessage(msg, formatter));
+          }
+        }
+        WritableMap containerMap = new WritableNativeMap();
+        containerMap.putString("containerId", containerId);
+        containerMap.putArray("messages", messagesArray);
+        resultMap.putMap(containerId, containerMap);
+      }
+      promise.resolve(resultMap);
+    });
+  }
+
+  private WritableMap mapEmbeddedMessage(EmbeddedMessage msg, SimpleDateFormat formatter) {
+    WritableMap map = new WritableNativeMap();
+    map.putString("id", msg.getId());
+    map.putString("containerId", msg.getContainerId());
+    map.putInt("templateId", msg.getTemplateId());
+    map.putString("title", msg.getTitle());
+    map.putString("content", msg.getContent());
+    map.putString("media", msg.getMedia());
+    map.putString("url", msg.getUrl());
+    map.putString("payload", msg.getPayload());
+    map.putInt("campaignKind", msg.getCampaignKind());
+    map.putInt("messageLayoutType", msg.getMessageLayoutType());
+    map.putString("engagementId", msg.getEngagementId());
+    map.putString("customerId", msg.getCustomerId());
+    map.putBoolean("isVisitor", msg.isVisitor());
+    map.putString("createdAt", formatter.format(msg.getCreatedAt()));
+    map.putString("updatedAt", formatter.format(msg.getUpdatedAt()));
+    map.putString("executionDateTime", formatter.format(msg.getExecutionDateTime()));
+
+    if (msg.getReadAt() != null) {
+      map.putString("readAt", formatter.format(msg.getReadAt()));
+    } else {
+      map.putNull("readAt");
+    }
+
+    if (msg.getExpiryDate() != null) {
+      map.putString("expiryDate", formatter.format(msg.getExpiryDate()));
+    } else {
+      map.putNull("expiryDate");
+    }
+
+    return map;
   }
 
   @Override

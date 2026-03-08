@@ -53,6 +53,8 @@ RCT_EXTERN_METHOD(inAppMarkAllInboxItemsAsRead:(RCTPromiseResolveBlock)resolve r
 
 RCT_EXTERN_METHOD(inAppGetInboxSummary:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(embeddedMessagingGetMessages:(NSArray*)containers resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+
 RCT_EXTERN_METHOD(removeListeners:(double)count)
 
 + (BOOL)requiresMainQueueSetup

@@ -1,3 +1,4 @@
+import type { Container, ContainerRequestOptions } from './embeddedMessaging';
 import type {
   DeepLinkHandler,
   InAppDeepLinkHandler,
@@ -37,6 +38,12 @@ export type {
   NonMatchedResolution,
   MatchedResolution,
 } from './ddl';
+
+export type {
+  EmbeddedMessage,
+  Container,
+  ContainerRequestOptions,
+} from './embeddedMessaging';
 
 const optimoveEmitter = new NativeEventEmitter(
   OptimoveReactNative as unknown as NativeModule
@@ -119,6 +126,14 @@ export default class Optimove {
 
   static inAppGetInboxSummary(): Promise<InAppInboxSummary> {
     return OptimoveReactNative.inAppGetInboxSummary();
+  }
+
+  static embeddedMessagingGetMessages(
+    containers: ContainerRequestOptions[]
+  ): Promise<Record<string, Container>> {
+    return OptimoveReactNative.embeddedMessagingGetMessages(
+      containers
+    ) as Promise<Record<string, Container>>;
   }
 
   static setPushReceivedHandler(pushReceivedHandler: PushNotificationHandler) {

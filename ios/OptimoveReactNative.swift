@@ -169,6 +169,11 @@ class OptimoveReactNative: RCTEventEmitter {
     }
 
     @objc
+    func embeddedMessagingGetMessages(_ containers: NSArray, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
+        reject("UNAVAILABLE", "Embedded messaging is not available on iOS", nil)
+    }
+
+    @objc
     func inAppGetInboxSummary(_ resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
         OptimoveInApp.getInboxSummaryAsync(inboxSummaryBlock: { inAppInboxSummary in
             var inAppInboxSummaryMap = [String: Any?]()

@@ -1,7 +1,7 @@
 import type {
   InAppInboxItem,
   InAppInboxSummary,
-  OptimoveInAppPresentationResult
+  OptimoveInAppPresentationResult,
 } from './inApp';
 
 import { TurboModuleRegistry, type TurboModule } from 'react-native';
@@ -23,6 +23,8 @@ export interface Spec extends TurboModule {
   inAppUpdateConsent(consentGiven: boolean): void;
   inAppMarkAllInboxItemsAsRead(): Promise<boolean>;
   inAppGetInboxSummary(): Promise<InAppInboxSummary>;
+
+  embeddedMessagingGetMessages(containers: Object[]): Promise<Object>;
 
   addListener(eventName: string): void;
   removeListeners(count: number): void;
