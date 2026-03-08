@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.1.0
+
+- Android: added Embedded Messaging API (`embeddedMessagingGetMessages`, `embeddedMessagingSetAsRead`, `embeddedMessagingReportClickMetric`, `embeddedMessagingDeleteMessage`).
+- Android: updated Optimove Android SDK to `7.10.1`.
+
 ## 3.0.1
 
 - iOS: Fixed duplicate interface definition error for `OptimoveInitializer` when building with React Native 0.79.6+
