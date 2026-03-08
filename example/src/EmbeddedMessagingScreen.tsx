@@ -41,6 +41,7 @@ export function EmbeddedMessagingScreen() {
     Optimove.embeddedMessagingGetMessages(containers)
       .then((response: Record<string, Container>) => {
         const allMessages = Object.values(response).flatMap((c) => c.messages);
+        console.log('Messages:', JSON.stringify(allMessages, null, 2));
         setMessages(allMessages);
         setStatusText(`${Object.keys(response).length} containers retrieved`);
       })

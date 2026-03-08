@@ -363,7 +363,7 @@ public class OptimoveReactNativeModule extends NativeOptimoveReactNativeSpec {
     WritableMap map = new WritableNativeMap();
     map.putString("id", msg.getId());
     map.putString("containerId", msg.getContainerId());
-    map.putInt("templateId", msg.getTemplateId());
+    map.putDouble("templateId", msg.getTemplateId());
     map.putString("title", msg.getTitle());
     map.putString("content", msg.getContent());
     map.putString("media", msg.getMedia());

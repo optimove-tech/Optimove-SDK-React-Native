@@ -2,8 +2,9 @@
 
 ## 3.1.0
 
-- Android: added Embedded Messaging API (`embeddedMessagingGetMessages`, `embeddedMessagingSetAsRead`, `embeddedMessagingReportClickMetric`, `embeddedMessagingDeleteMessage`).
+- Added Embedded Messaging API (`embeddedMessagingGetMessages`, `embeddedMessagingSetAsRead`, `embeddedMessagingReportClickMetric`, `embeddedMessagingDeleteMessage`).
 - Android: updated Optimove Android SDK to `7.10.1`.
+- iOS: update iOS SDK to `6.3.0`
 
 ## 3.0.1
 
@@ -62,7 +63,7 @@ Fixed the parsing of the push data passed from Android to React Native
 
 - Support iOS projects with `use_frameworks!` enabled
 - [Breaking] For push opens don't set launch intent flags. Instead rely on the default React Native `singleTask` launch mode.
-- [Breaking] Changed the ```DeepLink``` object structure received from the DeepLinkHandler when calling ```Optimove.setDeepLinkHandler``` to:
+- [Breaking] Changed the `DeepLink` object structure received from the DeepLinkHandler when calling `Optimove.setDeepLinkHandler` to:
 
 ```typescript
 export interface DeepLinkContent {
@@ -79,7 +80,7 @@ interface MatchedResolution {
   resolution: DeepLinkResolution.LINK_MATCHED;
   url: string;
   content: DeepLinkContent;
-  linkData: Record<string,any>;
+  linkData: Record<string, any>;
 }
 
 export type DeepLink = NonMatchedResolution | MatchedResolution;
@@ -87,7 +88,7 @@ export type DeepLink = NonMatchedResolution | MatchedResolution;
 
 ## 1.1.1
 
-Fixed the ```Date``` types of ```InAppInboxItem``` to be ```string```
+Fixed the `Date` types of `InAppInboxItem` to be `string`
 
 ## 1.1.0
 

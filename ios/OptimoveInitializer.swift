@@ -10,7 +10,7 @@ public class OptimoveInitializer: NSObject {
     private static let runtimeVersion = "Unknown";
 
     @objc
-    public static func initialize(_ optimoveCredentials: String, optimobileCredentials: String, inAppConsentStrategy: String, enableDeferredDeepLinking: Bool) {
+    public static func initialize(_ optimoveCredentials: String, optimobileCredentials: String, inAppConsentStrategy: String, enableDeferredDeepLinking: Bool, embeddedMessagingCredentials: String?) {
         //crash immediately if string is not one of the enums
         let inAppConsentStrategyEnum: InAppConsentStrategy = InAppConsentStrategy(rawValue: inAppConsentStrategy)!
 
@@ -35,6 +35,10 @@ public class OptimoveInitializer: NSObject {
 
         if inAppConsentStrategyEnum != .disabled {
             config.enableInAppMessaging(inAppConsentStrategy: inAppConsentStrategyEnum == .autoEnroll ? .autoEnroll : .explicitByUser)
+        }
+
+        if let credentials = embeddedMessagingCredentials, !credentials.isEmpty {
+            config.enableEmbeddedMessaging(credentials: credentials)
         }
 
         config.setInAppDeepLinkHandler { inAppButtonPress in
