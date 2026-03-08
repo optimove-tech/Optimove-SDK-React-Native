@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
@@ -22,6 +23,7 @@ import com.optimove.android.embeddedmessaging.OptimoveEmbeddedMessaging;
 import com.optimove.android.optimobile.InAppInboxItem;
 import com.optimove.android.optimobile.OptimoveInApp;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URL;

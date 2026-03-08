@@ -1,4 +1,5 @@
 import { Alert } from 'react-native';
+import { EmbeddedMessagingScreen } from './EmbeddedMessagingScreen';
 import { HomeScreen } from './HomeScreen';
 import { InboxScreen } from './InboxScreen';
 import { NavigationContainer } from '@react-navigation/native';
@@ -32,6 +33,20 @@ function App() {
           component={InboxScreen}
           options={{
             title: 'In-app inbox',
+            headerStyle: {
+              backgroundColor: '#FF8566',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="EmbeddedMessaging"
+          component={EmbeddedMessagingScreen}
+          options={{
+            title: 'Embedded Messaging',
             headerStyle: {
               backgroundColor: '#FF8566',
             },

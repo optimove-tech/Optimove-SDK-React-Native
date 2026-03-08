@@ -21,11 +21,11 @@ Optimove React Native SDK is available under the [MIT license](LICENSE).
 
 ## To run example app
 
-1. yarn install — installs root deps
-2. yarn prepare — builds the SDK into /lib
-3. cd example && yarn install — install app deps
-4. yarn start — start Metro bundler, keep it running
-5. cd example && yarn android or yarn ios
+1. `yarn install` — installs root deps
+2. `yarn prepare` — builds the SDK into /lib
+3. `yarn --cwd example install` — install app deps
+4. `yarn --cwd example start` — start Metro bundler, keep it running
+5. `yarn --cwd example android` / `yarn --cwd example ios`
 
 ## To see changes
 

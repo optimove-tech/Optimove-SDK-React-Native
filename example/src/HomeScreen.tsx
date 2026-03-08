@@ -162,6 +162,12 @@ export function HomeScreen({ navigation }: { navigation: any }) {
           />
           <Separator />
           <Button
+            onPress={() => navigation.navigate('EmbeddedMessaging')}
+            title="Embedded Messaging"
+            color="#FF8566"
+          />
+          <Separator />
+          <Button
             onPress={() => Optimove.inAppUpdateConsent(true)}
             title="Opt in"
             color="#FF8566"
