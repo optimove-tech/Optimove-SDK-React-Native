@@ -300,6 +300,63 @@ public class OptimoveReactNativeModule extends NativeOptimoveReactNativeSpec {
     });
   }
 
+  @Override
+  public void embeddedMessagingSetAsRead(ReadableMap message, boolean isRead, Promise promise) {
+    EmbeddedMessage embeddedMessage;
+    try {
+      embeddedMessage = new EmbeddedMessage(new JSONObject(message.toHashMap()));
+    } catch (JSONException e) {
+      promise.reject("INVALID_MESSAGE", e.getMessage());
+      return;
+    }
+
+    OptimoveEmbeddedMessaging.getInstance().setAsReadASync(embeddedMessage, isRead, result -> {
+      if (result == OptimoveEmbeddedMessaging.ResultType.SUCCESS) {
+        promise.resolve(null);
+      } else {
+        promise.reject(result.name(), "Failed to set message read status");
+      }
+    });
+  }
+
+  @Override
+  public void embeddedMessagingReportClickMetric(ReadableMap message, Promise promise) {
+    EmbeddedMessage embeddedMessage;
+    try {
+      embeddedMessage = new EmbeddedMessage(new JSONObject(message.toHashMap()));
+    } catch (JSONException e) {
+      promise.reject("INVALID_MESSAGE", e.getMessage());
+      return;
+    }
+
+    OptimoveEmbeddedMessaging.getInstance().reportClickMetricAsync(embeddedMessage, result -> {
+      if (result == OptimoveEmbeddedMessaging.ResultType.SUCCESS) {
+        promise.resolve(null);
+      } else {
+        promise.reject(result.name(), "Failed to report click metric");
+      }
+    });
+  }
+
+  @Override
+  public void embeddedMessagingDeleteMessage(ReadableMap message, Promise promise) {
+    EmbeddedMessage embeddedMessage;
+    try {
+      embeddedMessage = new EmbeddedMessage(new JSONObject(message.toHashMap()));
+    } catch (JSONException e) {
+      promise.reject("INVALID_MESSAGE", e.getMessage());
+      return;
+    }
+
+    OptimoveEmbeddedMessaging.getInstance().deleteMessageAsync(embeddedMessage, result -> {
+      if (result == OptimoveEmbeddedMessaging.ResultType.SUCCESS) {
+        promise.resolve(null);
+      } else {
+        promise.reject(result.name(), "Failed to delete embedded message");
+      }
+    });
+  }
+
   private WritableMap mapEmbeddedMessage(EmbeddedMessage msg, SimpleDateFormat formatter) {
     WritableMap map = new WritableNativeMap();
     map.putString("id", msg.getId());

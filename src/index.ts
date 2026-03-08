@@ -1,4 +1,8 @@
-import type { Container, ContainerRequestOptions } from './embeddedMessaging';
+import type {
+  Container,
+  ContainerRequestOptions,
+  EmbeddedMessage,
+} from './embeddedMessaging';
 import type {
   DeepLinkHandler,
   InAppDeepLinkHandler,
@@ -134,6 +138,25 @@ export default class Optimove {
     return OptimoveReactNative.embeddedMessagingGetMessages(
       containers
     ) as Promise<Record<string, Container>>;
+  }
+
+  static embeddedMessagingDeleteMessage(
+    message: EmbeddedMessage
+  ): Promise<void> {
+    return OptimoveReactNative.embeddedMessagingDeleteMessage(message);
+  }
+
+  static embeddedMessagingReportClickMetric(
+    message: EmbeddedMessage
+  ): Promise<void> {
+    return OptimoveReactNative.embeddedMessagingReportClickMetric(message);
+  }
+
+  static embeddedMessagingSetAsRead(
+    message: EmbeddedMessage,
+    isRead: boolean
+  ): Promise<void> {
+    return OptimoveReactNative.embeddedMessagingSetAsRead(message, isRead);
   }
 
   static setPushReceivedHandler(pushReceivedHandler: PushNotificationHandler) {

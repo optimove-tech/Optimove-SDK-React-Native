@@ -25,6 +25,9 @@ export interface Spec extends TurboModule {
   inAppGetInboxSummary(): Promise<InAppInboxSummary>;
 
   embeddedMessagingGetMessages(containers: Object[]): Promise<Object>;
+  embeddedMessagingDeleteMessage(message: Object): Promise<void>;
+  embeddedMessagingReportClickMetric(message: Object): Promise<void>;
+  embeddedMessagingSetAsRead(message: Object, isRead: boolean): Promise<void>;
 
   addListener(eventName: string): void;
   removeListeners(count: number): void;
