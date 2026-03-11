@@ -175,10 +175,10 @@ class OptimoveReactNative: RCTEventEmitter {
             return
         }
 
-        let containerOptions: [ContainerRequestOptions] = containers.compactMap { item in
+        let containerOptions: [ContainerRequestOptions] = containers.compactMap { item -> ContainerRequestOptions? in
             guard let dict = item as? NSDictionary,
-                  let containerId = dict["containerId"] as? String else { return nil }
-            return ContainerRequestOptions(containerId: containerId, limit: dict["limit"] as? Int)
+                  let data = try? JSONSerialization.data(withJSONObject: dict) else { return nil }
+            return try? JSONDecoder().decode(ContainerRequestOptions.self, from: data)
         }
 
         service.getMessagesAsync(containers: containerOptions) { result in
