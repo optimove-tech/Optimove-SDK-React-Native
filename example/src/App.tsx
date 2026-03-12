@@ -1,10 +1,16 @@
-import { Alert } from 'react-native';
+import { Alert, NativeModules, Platform } from 'react-native';
+
 import { EmbeddedMessagingScreen } from './EmbeddedMessagingScreen';
 import { HomeScreen } from './HomeScreen';
 import { InboxScreen } from './InboxScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import Optimove from '@optimove-inc/react-native';
 import { createStackNavigator } from '@react-navigation/stack';
+
+const baseSdkVersion: string =
+  Platform.OS === 'android'
+    ? (NativeModules.SdkInfo?.getConstants?.().androidBaseSdkVersion ?? '')
+    : (NativeModules.SdkInfo?.iosSdkVersion ?? '');
 
 const Stack = createStackNavigator();
 
@@ -18,7 +24,7 @@ function App() {
           name="Home"
           component={HomeScreen}
           options={{
-            title: 'Optimove React Native QA',
+            title: `RN QA (native: ${baseSdkVersion ? baseSdkVersion : '-'}) `,
             headerStyle: {
               backgroundColor: '#FF8566',
             },
