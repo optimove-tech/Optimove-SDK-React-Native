@@ -17,8 +17,8 @@ Pod::Spec.new do |s|
   s.swift_version = '5.0'
   s.public_header_files = []
 
-  s.dependency 'OptimoveCore', '~> 6.3.0'
-  s.dependency 'OptimoveSDK', '~> 6.3.0'
+  s.dependency 'OptimoveCore', '~> 6.4.1'
+  s.dependency 'OptimoveSDK', '~> 6.4.1'
 
   install_modules_dependencies(s)
 end

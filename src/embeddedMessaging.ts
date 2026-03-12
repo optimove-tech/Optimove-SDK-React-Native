@@ -9,7 +9,7 @@ export interface EmbeddedMessage {
   payload: string;
   campaignKind: number;
   messageLayoutType: number;
-  engagementId: string;
+  engagementId: string | null;
   customerId: string;
   isVisitor: boolean;
   createdAt: string;

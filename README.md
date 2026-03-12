@@ -32,3 +32,7 @@ Optimove React Native SDK is available under the [MIT license](LICENSE).
 - example app changes: picked by Metro
 - RN src changes: `yarn prepare` from root
 - Native changes: `yarn android` from example
+
+## Note
+
+- To run it via Android Studio may need to open Android Studio from terminal

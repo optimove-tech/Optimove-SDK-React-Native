@@ -296,14 +296,6 @@ class OptimoveReactNative: RCTEventEmitter {
     }
 
     private func mapEmbeddedMessage(_ msg: EmbeddedMessage, formatter: ISO8601DateFormatter) -> [String: Any?] {
-        let payloadString: String
-        if let data = try? JSONSerialization.data(withJSONObject: msg.payload.mapValues { $0.value }),
-           let str = String(data: data, encoding: .utf8) {
-            payloadString = str
-        } else {
-            payloadString = "{}"
-        }
-
         return [
             "id": msg.id,
             "containerId": msg.containerId,
@@ -312,32 +304,22 @@ class OptimoveReactNative: RCTEventEmitter {
             "content": msg.content,
             "media": msg.media,
             "url": msg.url,
-            "payload": payloadString,
+            "payload": msg.payload,
             "campaignKind": msg.campaignKind,
             "messageLayoutType": msg.messageLayoutType,
             "engagementId": msg.engagementId,
             "customerId": msg.customerId,
             "isVisitor": msg.isVisitor,
             "createdAt": formatter.string(from: msg.createdAt),
-            "updatedAt": msg.updatedAt.map { formatter.string(from: $0) },
-            "executionDateTime": msg.executionDateTime,
-            "readAt": msg.readAt,
+            "updatedAt": formatter.string(from: msg.updatedAt),
+            "executionDateTime": formatter.string(from: msg.executionDateTime),
+            "readAt": msg.readAt.map { formatter.string(from: $0) },
             "expiryDate": msg.expiryDate.map { formatter.string(from: $0) },
         ]
     }
 
     private func embeddedMessageFrom(_ dict: NSDictionary) throws -> EmbeddedMessage {
-        var mutableDict = dict as! [String: Any]
-
-        if let payloadStr = mutableDict["payload"] as? String,
-           let payloadData = payloadStr.data(using: .utf8),
-           let payloadDict = try? JSONSerialization.jsonObject(with: payloadData) {
-            mutableDict["payload"] = payloadDict
-        } else {
-            mutableDict["payload"] = [String: Any]()
-        }
-
-        let data = try JSONSerialization.data(withJSONObject: mutableDict)
+        let data = try JSONSerialization.data(withJSONObject: dict)
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         return try decoder.decode(EmbeddedMessage.self, from: data)

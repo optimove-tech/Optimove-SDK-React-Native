@@ -12,8 +12,8 @@ PODS:
     - DoubleConversion
     - glog
     - hermes-engine
-    - OptimoveCore (~> 6.3.0)
-    - OptimoveSDK (~> 6.3.0)
+    - OptimoveCore (~> 6.4.1)
+    - OptimoveSDK (~> 6.4.1)
     - RCT-Folly (= 2024.10.14.00)
     - RCTRequired
     - RCTTypeSafety
@@ -31,10 +31,10 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - OptimoveCore (6.3.0)
-  - OptimoveNotificationServiceExtension (6.2.6)
-  - OptimoveSDK (6.3.0):
-    - OptimoveCore (= 6.3.0)
+  - OptimoveCore (6.4.1)
+  - OptimoveNotificationServiceExtension (6.4.1)
+  - OptimoveSDK (6.4.1):
+    - OptimoveCore (= 6.4.1)
   - RCT-Folly (2024.10.14.00):
     - boost
     - DoubleConversion
@@ -1870,7 +1870,7 @@ DEPENDENCIES:
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
   - optimove-react-native (from `../..`)
-  - OptimoveNotificationServiceExtension (~> 6.2.3)
+  - OptimoveNotificationServiceExtension (~> 6.4.1)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCT-Folly/Fabric (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTDeprecation (from `../node_modules/react-native/ReactApple/Libraries/RCTFoundation/RCTDeprecation`)
@@ -2094,10 +2094,10 @@ SPEC CHECKSUMS:
   fmt: 01b82d4ca6470831d1cc0852a1af644be019e8f6
   glog: 08b301085f15bcbb6ff8632a8ebaf239aae04e6a
   hermes-engine: 9e868dc7be781364296d6ee2f56d0c1a9ef0bb11
-  optimove-react-native: 46f2bd8be252fa9c59bab12069ba4dc7c068c7e6
-  OptimoveCore: ca4b46663d9a9c8c4533059785d7aa81ecf76fce
-  OptimoveNotificationServiceExtension: c34a2dda2c135366ceaecde695c310a8f7f4e4c9
-  OptimoveSDK: 2088004f39747ed224e2d686749858fc21b74c9e
+  optimove-react-native: 361f48c50192644bd14994dd7a9658ffe24fa515
+  OptimoveCore: 8f9b76da066ddf8c2f9c5a6b62f7d9e1a1a3b74a
+  OptimoveNotificationServiceExtension: d162df1d1a0d4351e0deaa60f9f22650e7395d91
+  OptimoveSDK: 28c70f8ac8e4972dcff990485bdaa63c2db294fd
   RCT-Folly: 7b4f73a92ad9571b9dbdb05bb30fad927fa971e1
   RCTDeprecation: ebe712bb05077934b16c6bf25228bdec34b64f83
   RCTRequired: ca91e5dd26b64f577b528044c962baf171c6b716
@@ -2162,6 +2162,6 @@ SPEC CHECKSUMS:
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: 1259c7a8cbaccf7b4c3ddf8ee36ca11be9dee407
 
-PODFILE CHECKSUM: 0447bdb8578736bbda795234ca0ebf5d05c471eb
+PODFILE CHECKSUM: 9dbe32a3658b8d82a2e08104af2928c5e81327dc
 
 COCOAPODS: 1.16.2
