@@ -3,7 +3,7 @@
 ## 3.1.0
 
 - Added Embedded Messaging API (`embeddedMessagingGetMessages`, `embeddedMessagingSetAsRead`, `embeddedMessagingReportClickMetric`, `embeddedMessagingDeleteMessage`).
-- Android: updated Optimove Android SDK to `7.10.1`.
+- Android: updated Optimove Android SDK to `7.11.1`.
 - iOS: update iOS SDK to `6.3.0`
 
 ## 3.0.1
