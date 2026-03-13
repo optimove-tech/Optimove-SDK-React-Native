@@ -10,6 +10,11 @@ public class OptimoveInitializer: NSObject {
     private static let runtimeVersion = "Unknown";
 
     @objc
+    public static func initialize(_ optimoveCredentials: String, optimobileCredentials: String, inAppConsentStrategy: String, enableDeferredDeepLinking: Bool) {
+        initialize(optimoveCredentials, optimobileCredentials: optimobileCredentials, inAppConsentStrategy: inAppConsentStrategy, enableDeferredDeepLinking: enableDeferredDeepLinking, embeddedMessagingCredentials: nil)
+    }
+
+    @objc
     public static func initialize(_ optimoveCredentials: String, optimobileCredentials: String, inAppConsentStrategy: String, enableDeferredDeepLinking: Bool, embeddedMessagingCredentials: String?) {
         //crash immediately if string is not one of the enums
         let inAppConsentStrategyEnum: InAppConsentStrategy = InAppConsentStrategy(rawValue: inAppConsentStrategy)!
