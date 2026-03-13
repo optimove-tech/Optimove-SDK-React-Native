@@ -3,6 +3,7 @@ import {
   FlatList,
   Modal,
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -27,6 +28,7 @@ export function EmbeddedMessagingScreen() {
   const [messages, setMessages] = useState<EmbeddedMessage[]>([]);
   const [selectedMessage, setSelectedMessage] =
     useState<EmbeddedMessage | null>(null);
+  const [jsonMessage, setJsonMessage] = useState<EmbeddedMessage | null>(null);
 
   const loadMessages = () => {
     if (!containerIdsText.trim()) return;
@@ -41,7 +43,6 @@ export function EmbeddedMessagingScreen() {
     Optimove.embeddedMessagingGetMessages(containers)
       .then((response: Record<string, Container>) => {
         const allMessages = Object.values(response).flatMap((c) => c.messages);
-        console.log('Messages:', JSON.stringify(allMessages, null, 2));
         setMessages(allMessages);
         setStatusText(`${Object.keys(response).length} containers retrieved`);
       })
@@ -110,16 +111,50 @@ export function EmbeddedMessagingScreen() {
           data={messages}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <TouchableOpacity onLongPress={() => setSelectedMessage(item)}>
-              <Text style={styles.messageItem}>
-                {item.title}: {item.content}
-                {item.readAt === null ? ' •' : ''}
-              </Text>
-            </TouchableOpacity>
+            <View style={styles.messageRow}>
+              <TouchableOpacity
+                style={styles.flex}
+                onLongPress={() => setSelectedMessage(item)}
+              >
+                <Text style={styles.messageItem}>
+                  {item.title}: {item.content}
+                  {item.readAt === null ? ' •' : ''}
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.jsonButton}
+                onPress={() => setJsonMessage(item)}
+              >
+                <Text style={styles.jsonButtonText}>JSON</Text>
+              </TouchableOpacity>
+            </View>
           )}
           ItemSeparatorComponent={ItemSeparator}
         />
       </View>
+
+      <Modal
+        visible={jsonMessage !== null}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setJsonMessage(null)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalBox}>
+            <Text style={styles.modalTitle}>Message JSON</Text>
+            <ScrollView style={styles.jsonScroll}>
+              <Text style={styles.jsonText}>
+                {jsonMessage ? JSON.stringify(jsonMessage, null, 2) : ''}
+              </Text>
+            </ScrollView>
+            <View style={styles.modalCancel}>
+              <TouchableOpacity onPress={() => setJsonMessage(null)}>
+                <Text style={styles.modalAction}>Close</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
 
       <Modal
         visible={selectedMessage !== null}
@@ -195,10 +230,31 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 8,
   },
+  messageRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   messageItem: {
     fontSize: 14,
     paddingVertical: 8,
     paddingHorizontal: 4,
+  },
+  jsonButton: {
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+  },
+  jsonButtonText: {
+    fontSize: 12,
+    color: '#1a73e8',
+    fontWeight: 'bold',
+  },
+  jsonScroll: {
+    maxHeight: 400,
+    marginVertical: 8,
+  },
+  jsonText: {
+    fontFamily: 'monospace',
+    fontSize: 11,
   },
   itemSeparator: {
     height: 1,
