@@ -1,6 +1,6 @@
 {
   "name": "@optimove-inc/react-native",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "description": "Optimove React Native SDK",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
@@ -60,7 +60,11 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^19.6.0",
+    "@eslint/compat": "^2.0.2",
+    "@eslint/eslintrc": "^3.3.4",
+    "@eslint/js": "^10.0.1",
     "@evilmartians/lefthook": "^1.5.0",
+    "@react-native/eslint-config": "^0.84.1",
     "@release-it/conventional-changelog": "^10.0.1",
     "@types/jest": "^29.5.5",
     "@types/react": "^19.0.0",

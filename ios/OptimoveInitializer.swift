@@ -4,13 +4,18 @@ import OptimoveSDK
 @objc(OptimoveInitializer)
 public class OptimoveInitializer: NSObject {
 
-    private static let sdkVersion = "3.0.1"
+    private static let sdkVersion = "3.1.0"
     private static let sdkType = 9
     private static let runtimeType = 7
     private static let runtimeVersion = "Unknown";
 
     @objc
     public static func initialize(_ optimoveCredentials: String, optimobileCredentials: String, inAppConsentStrategy: String, enableDeferredDeepLinking: Bool) {
+        initialize(optimoveCredentials, optimobileCredentials: optimobileCredentials, inAppConsentStrategy: inAppConsentStrategy, enableDeferredDeepLinking: enableDeferredDeepLinking, embeddedMessagingCredentials: nil)
+    }
+
+    @objc
+    public static func initialize(_ optimoveCredentials: String, optimobileCredentials: String, inAppConsentStrategy: String, enableDeferredDeepLinking: Bool, embeddedMessagingCredentials: String?) {
         //crash immediately if string is not one of the enums
         let inAppConsentStrategyEnum: InAppConsentStrategy = InAppConsentStrategy(rawValue: inAppConsentStrategy)!
 
@@ -35,6 +40,10 @@ public class OptimoveInitializer: NSObject {
 
         if inAppConsentStrategyEnum != .disabled {
             config.enableInAppMessaging(inAppConsentStrategy: inAppConsentStrategyEnum == .autoEnroll ? .autoEnroll : .explicitByUser)
+        }
+
+        if let credentials = embeddedMessagingCredentials, !credentials.isEmpty {
+            config.enableEmbeddedMessaging(credentials: credentials)
         }
 
         config.setInAppDeepLinkHandler { inAppButtonPress in

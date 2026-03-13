@@ -169,6 +169,163 @@ class OptimoveReactNative: RCTEventEmitter {
     }
 
     @objc
+    func embeddedMessagingGetMessages(_ containers: NSArray, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
+        guard let service = try? EmbeddedMessagesService.getInstance() else {
+            reject("NOT_INITIALIZED", "Embedded messaging is not initialized", nil)
+            return
+        }
+
+        let containerOptions: [ContainerRequestOptions] = containers.compactMap { item -> ContainerRequestOptions? in
+            guard let dict = item as? NSDictionary,
+                  let data = try? JSONSerialization.data(withJSONObject: dict) else { return nil }
+            return try? JSONDecoder().decode(ContainerRequestOptions.self, from: data)
+        }
+
+        service.getMessagesAsync(containers: containerOptions) { result in
+            switch result {
+            case .successMessages(let response):
+                let formatter = ISO8601DateFormatter()
+                var resultMap: [String: Any] = [:]
+                for (containerId, container) in response {
+                    resultMap[containerId] = [
+                        "containerId": containerId,
+                        "messages": container.messages.map { self.mapEmbeddedMessage($0, formatter: formatter) }
+                    ]
+                }
+                resolve(resultMap)
+            case .errorUserNotSet:
+                reject("USER_NOT_SET", "User is not set", nil)
+            case .errorCredentialsNotSet:
+                reject("CREDENTIALS_NOT_SET", "Embedded messaging credentials are not set", nil)
+            case .error(let error):
+                reject("ERROR", error.localizedDescription, nil)
+            case .success:
+                reject("ERROR", "Unexpected result type", nil)
+            }
+        }
+    }
+
+    @objc
+    func embeddedMessagingDeleteMessage(_ message: NSDictionary, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
+        guard let service = try? EmbeddedMessagesService.getInstance() else {
+            reject("NOT_INITIALIZED", "Embedded messaging is not initialized", nil)
+            return
+        }
+
+        guard let embeddedMessage = try? embeddedMessageFrom(message) else {
+            reject("INVALID_MESSAGE", "Failed to parse message", nil)
+            return
+        }
+
+        service.deleteMessagesAsync(message: embeddedMessage) { result in
+            switch result {
+            case .success:
+                resolve(nil)
+            case .errorUserNotSet:
+                reject("USER_NOT_SET", "User is not set", nil)
+            case .errorCredentialsNotSet:
+                reject("CREDENTIALS_NOT_SET", "Embedded messaging credentials are not set", nil)
+            case .error(let error):
+                reject("ERROR", error.localizedDescription, nil)
+            case .successMessages:
+                reject("ERROR", "Unexpected result type", nil)
+            }
+        }
+    }
+
+    @objc
+    func embeddedMessagingReportClickMetric(_ message: NSDictionary, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
+        guard let service = try? EmbeddedMessagesService.getInstance() else {
+            reject("NOT_INITIALIZED", "Embedded messaging is not initialized", nil)
+            return
+        }
+
+        guard let embeddedMessage = try? embeddedMessageFrom(message) else {
+            reject("INVALID_MESSAGE", "Failed to parse message", nil)
+            return
+        }
+
+        service.reportClickMetricAsync(message: embeddedMessage) { result in
+            switch result {
+            case .success:
+                resolve(nil)
+            case .errorUserNotSet:
+                reject("USER_NOT_SET", "User is not set", nil)
+            case .errorCredentialsNotSet:
+                reject("CREDENTIALS_NOT_SET", "Embedded messaging credentials are not set", nil)
+            case .error(let error):
+                reject("ERROR", error.localizedDescription, nil)
+            case .successMessages:
+                reject("ERROR", "Unexpected result type", nil)
+            }
+        }
+    }
+
+    @objc
+    func embeddedMessagingSetAsRead(_ message: NSDictionary, isRead: Bool, resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
+        guard let service = try? EmbeddedMessagesService.getInstance() else {
+            reject("NOT_INITIALIZED", "Embedded messaging is not initialized", nil)
+            return
+        }
+
+        guard let embeddedMessage = try? embeddedMessageFrom(message) else {
+            reject("INVALID_MESSAGE", "Failed to parse message", nil)
+            return
+        }
+
+        let completion: EmbeddedMessagesService.EmbeddedMessagingSetHandler = { result in
+            switch result {
+            case .success:
+                resolve(nil)
+            case .errorUserNotSet:
+                reject("USER_NOT_SET", "User is not set", nil)
+            case .errorCredentialsNotSet:
+                reject("CREDENTIALS_NOT_SET", "Embedded messaging credentials are not set", nil)
+            case .error(let error):
+                reject("ERROR", error.localizedDescription, nil)
+            case .successMessages:
+                reject("ERROR", "Unexpected result type", nil)
+            }
+        }
+
+        if isRead {
+            service.setAsReadAsync(message: embeddedMessage, completion: completion)
+        } else {
+            service.setAsUnReadAsync(message: embeddedMessage, completion: completion)
+        }
+    }
+
+    private func mapEmbeddedMessage(_ msg: EmbeddedMessage, formatter: ISO8601DateFormatter) -> [String: Any?] {
+        return [
+            "id": msg.id,
+            "containerId": msg.containerId,
+            "templateId": msg.templateId,
+            "title": msg.title,
+            "content": msg.content,
+            "media": msg.media,
+            "url": msg.url,
+            "payload": msg.payload,
+            "campaignKind": msg.campaignKind,
+            "messageLayoutType": msg.messageLayoutType,
+            "engagementId": msg.engagementId,
+            "customerId": msg.customerId,
+            "isVisitor": msg.isVisitor,
+            "createdAt": formatter.string(from: msg.createdAt),
+            "updatedAt": formatter.string(from: msg.updatedAt),
+            "executionDateTime": formatter.string(from: msg.executionDateTime),
+            "readAt": msg.readAt.map { formatter.string(from: $0) },
+            "expiryDate": msg.expiryDate.map { formatter.string(from: $0) },
+        ]
+    }
+
+    private func embeddedMessageFrom(_ dict: NSDictionary) throws -> EmbeddedMessage {
+        let data = try JSONSerialization.data(withJSONObject: dict)
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        return try decoder.decode(EmbeddedMessage.self, from: data)
+    }
+
+    @objc
     func inAppGetInboxSummary(_ resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
         OptimoveInApp.getInboxSummaryAsync(inboxSummaryBlock: { inAppInboxSummary in
             var inAppInboxSummaryMap = [String: Any?]()

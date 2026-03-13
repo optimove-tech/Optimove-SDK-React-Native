@@ -1,10 +1,10 @@
 import {
-  Button,
   SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import { useEffect, useState } from 'react';
@@ -57,14 +57,15 @@ export function HomeScreen({ navigation }: { navigation: any }) {
             placeholder="User id"
           />
           <Separator />
-          <Button
+          <TouchableOpacity
+            style={styles.button}
             onPress={() => {
               Optimove.setUserId(userIdText);
-              Optimove.getVisitorId().then(setVisitorId);
+              setTimeout(() => Optimove.getVisitorId().then(setVisitorId), 0);
             }}
-            title="Set user id"
-            color="#FF8566"
-          />
+          >
+            <Text style={styles.buttonText}>Set user id</Text>
+          </TouchableOpacity>
           <Separator />
           <Separator />
           <TextInput
@@ -74,39 +75,42 @@ export function HomeScreen({ navigation }: { navigation: any }) {
             placeholder="Email"
           />
           <Separator />
-          <Button
-            onPress={() => {
-              Optimove.setUserEmail(emailText);
-            }}
-            title="Set email"
-            color="#FF8566"
-          />
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => Optimove.setUserEmail(emailText)}
+          >
+            <Text style={styles.buttonText}>Set email</Text>
+          </TouchableOpacity>
           <Separator />
-          <Button
+          <TouchableOpacity
+            style={styles.button}
             onPress={() => Optimove.registerUser(userIdText, emailText)}
-            title="Register user"
-            color="#FF8566"
-          />
+          >
+            <Text style={styles.buttonText}>Register user</Text>
+          </TouchableOpacity>
           <Separator />
-          <Button
+          <TouchableOpacity
+            style={styles.button}
             onPress={() => Optimove.signOutUser()}
-            title="Sign out"
-            color="#FF8566"
-          />
+          >
+            <Text style={styles.buttonText}>Sign out</Text>
+          </TouchableOpacity>
         </View>
         <Separator />
         <View style={styles.container}>
-          <Button
+          <TouchableOpacity
+            style={styles.button}
             onPress={() => Optimove.pushRequestDeviceToken()}
-            title="Register push"
-            color="#FF8566"
-          />
+          >
+            <Text style={styles.buttonText}>Register push</Text>
+          </TouchableOpacity>
           <Separator />
-          <Button
+          <TouchableOpacity
+            style={styles.button}
             onPress={() => Optimove.pushUnregister()}
-            title="Unregister push"
-            color="#FF8566"
-          />
+          >
+            <Text style={styles.buttonText}>Unregister push</Text>
+          </TouchableOpacity>
         </View>
         <Separator />
         <View style={styles.container}>
@@ -117,13 +121,16 @@ export function HomeScreen({ navigation }: { navigation: any }) {
             placeholder="Event name"
           />
           <Separator />
-          <Button
+          <TouchableOpacity
+            style={styles.button}
             onPress={() =>
               Optimove.reportEvent(eventText, { string_param: 'some_param' })
             }
-            title="Report event with string_param: some_param"
-            color="#FF8566"
-          />
+          >
+            <Text style={styles.buttonText}>
+              Report event with string_param: some_param
+            </Text>
+          </TouchableOpacity>
         </View>
 
         <Separator />
@@ -142,36 +149,47 @@ export function HomeScreen({ navigation }: { navigation: any }) {
             placeholder="Screen category (Optional)"
           />
           <Separator />
-          <Button
+          <TouchableOpacity
+            style={styles.button}
             onPress={() =>
               Optimove.reportScreenVisit(
                 screenTitleText,
                 screenCategoryText !== '' ? screenCategoryText : undefined
               )
             }
-            title="Report screen visit"
-            color="#FF8566"
-          />
+          >
+            <Text style={styles.buttonText}>Report screen visit</Text>
+          </TouchableOpacity>
         </View>
         <Separator />
         <View style={styles.container}>
-          <Button
+          <TouchableOpacity
+            style={styles.button}
             onPress={() => navigation.navigate('Inbox')}
-            title="Go to inbox"
-            color="#FF8566"
-          />
+          >
+            <Text style={styles.buttonText}>Go to inbox</Text>
+          </TouchableOpacity>
           <Separator />
-          <Button
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate('EmbeddedMessaging')}
+          >
+            <Text style={styles.buttonText}>Embedded Messaging</Text>
+          </TouchableOpacity>
+          <Separator />
+          <TouchableOpacity
+            style={styles.button}
             onPress={() => Optimove.inAppUpdateConsent(true)}
-            title="Opt in"
-            color="#FF8566"
-          />
+          >
+            <Text style={styles.buttonText}>Opt in</Text>
+          </TouchableOpacity>
           <Separator />
-          <Button
+          <TouchableOpacity
+            style={styles.button}
             onPress={() => Optimove.inAppUpdateConsent(false)}
-            title="Opt out"
-            color="#FF8566"
-          />
+          >
+            <Text style={styles.buttonText}>Opt out</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -209,5 +227,15 @@ const styles = StyleSheet.create({
   scrollView: {
     width: '100%',
     marginHorizontal: 20,
+  },
+  button: {
+    backgroundColor: '#FF8566',
+    padding: 10,
+    borderRadius: 4,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
   },
 });

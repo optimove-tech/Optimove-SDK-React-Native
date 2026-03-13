@@ -12,10 +12,11 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		503326E2293E3C0D0082876B /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503326E1293E3C0D0082876B /* NotificationService.swift */; };
 		503326E6293E3C0D0082876B /* NotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 503326DF293E3C0C0082876B /* NotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7752313F197F0F075142AFFD /* Pods_NotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2C00B313E197228A34A2C73 /* Pods_NotificationServiceExtension.framework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		9CAC5BED9F0FA1630A0A9E2E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 6B92505C6B05C8987626E6D7 /* PrivacyInfo.xcprivacy */; };
-		B667FF59D4A8437E25545CAA /* Pods_OptimoveReactNativeExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6DC49E4B85EFD4302D6CFAE /* Pods_OptimoveReactNativeExample.framework */; };
-		FE887894F68067C9D62465D1 /* Pods_NotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDEEEA0FE491B88889288A63 /* Pods_NotificationServiceExtension.framework */; };
+		A875992B598AE0CA95F37BEE /* Pods_OptimoveReactNativeExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E970D26F90770FF040EDA2 /* Pods_OptimoveReactNativeExample.framework */; };
+		F58F22C72F6341010001D6F1 /* SdkInfoModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F58F22C62F6341010001D6F1 /* SdkInfoModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,13 +44,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		048572BCEA517E8B2A4C09A1 /* Pods-OptimoveReactNativeExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OptimoveReactNativeExample.debug.xcconfig"; path = "Target Support Files/Pods-OptimoveReactNativeExample/Pods-OptimoveReactNativeExample.debug.xcconfig"; sourceTree = "<group>"; };
+		04E970D26F90770FF040EDA2 /* Pods_OptimoveReactNativeExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OptimoveReactNativeExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* OptimoveReactNativeExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OptimoveReactNativeExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = OptimoveReactNativeExample/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = OptimoveReactNativeExample/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = OptimoveReactNativeExample/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = OptimoveReactNativeExample/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = OptimoveReactNativeExample/main.m; sourceTree = "<group>"; };
-		34F1893E0F047DDC92EDB97B /* Pods-NotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-NotificationServiceExtension/Pods-NotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
+		14CBFEDCDFEB5B6632B99094 /* Pods-OptimoveReactNativeExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OptimoveReactNativeExample.release.xcconfig"; path = "Target Support Files/Pods-OptimoveReactNativeExample/Pods-OptimoveReactNativeExample.release.xcconfig"; sourceTree = "<group>"; };
 		503326DA293E355E0082876B /* OptimoveReactNativeExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = OptimoveReactNativeExample.entitlements; path = OptimoveReactNativeExample/OptimoveReactNativeExample.entitlements; sourceTree = "<group>"; };
 		503326DF293E3C0C0082876B /* NotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		503326E1293E3C0D0082876B /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -58,12 +61,11 @@
 		503326FA29466BB70082876B /* OptimoveReactNativeExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OptimoveReactNativeExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		6B92505C6B05C8987626E6D7 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = OptimoveReactNativeExample/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = OptimoveReactNativeExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B6DC49E4B85EFD4302D6CFAE /* Pods_OptimoveReactNativeExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OptimoveReactNativeExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B9E5F0F35F54D8FF53E76D64 /* Pods-OptimoveReactNativeExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OptimoveReactNativeExample.release.xcconfig"; path = "Target Support Files/Pods-OptimoveReactNativeExample/Pods-OptimoveReactNativeExample.release.xcconfig"; sourceTree = "<group>"; };
-		BDEEEA0FE491B88889288A63 /* Pods_NotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE472B03CC84229AF997CA8E /* Pods-OptimoveReactNativeExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OptimoveReactNativeExample.debug.xcconfig"; path = "Target Support Files/Pods-OptimoveReactNativeExample/Pods-OptimoveReactNativeExample.debug.xcconfig"; sourceTree = "<group>"; };
-		BF4EC9CB7275D5CB9A30D8B7 /* Pods-NotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-NotificationServiceExtension/Pods-NotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		97BF4A40B14DE68C0D2474B1 /* Pods-NotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-NotificationServiceExtension/Pods-NotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		9A3C8D166C4BB5A949A3A274 /* Pods-NotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-NotificationServiceExtension/Pods-NotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
+		A2C00B313E197228A34A2C73 /* Pods_NotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F58F22C62F6341010001D6F1 /* SdkInfoModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SdkInfoModule.m; path = OptimoveReactNativeExample/SdkInfoModule.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B667FF59D4A8437E25545CAA /* Pods_OptimoveReactNativeExample.framework in Frameworks */,
+				A875992B598AE0CA95F37BEE /* Pods_OptimoveReactNativeExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE887894F68067C9D62465D1 /* Pods_NotificationServiceExtension.framework in Frameworks */,
+				7752313F197F0F075142AFFD /* Pods_NotificationServiceExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,8 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				BDEEEA0FE491B88889288A63 /* Pods_NotificationServiceExtension.framework */,
-				B6DC49E4B85EFD4302D6CFAE /* Pods_OptimoveReactNativeExample.framework */,
+				A2C00B313E197228A34A2C73 /* Pods_NotificationServiceExtension.framework */,
+				04E970D26F90770FF040EDA2 /* Pods_OptimoveReactNativeExample.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -139,6 +141,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				F58F22C62F6341010001D6F1 /* SdkInfoModule.m */,
 				13B07FAE1A68108700A75B9A /* OptimoveReactNativeExample */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				503326E0293E3C0D0082876B /* NotificationServiceExtension */,
@@ -164,10 +167,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BF4EC9CB7275D5CB9A30D8B7 /* Pods-NotificationServiceExtension.debug.xcconfig */,
-				34F1893E0F047DDC92EDB97B /* Pods-NotificationServiceExtension.release.xcconfig */,
-				BE472B03CC84229AF997CA8E /* Pods-OptimoveReactNativeExample.debug.xcconfig */,
-				B9E5F0F35F54D8FF53E76D64 /* Pods-OptimoveReactNativeExample.release.xcconfig */,
+				97BF4A40B14DE68C0D2474B1 /* Pods-NotificationServiceExtension.debug.xcconfig */,
+				9A3C8D166C4BB5A949A3A274 /* Pods-NotificationServiceExtension.release.xcconfig */,
+				048572BCEA517E8B2A4C09A1 /* Pods-OptimoveReactNativeExample.debug.xcconfig */,
+				14CBFEDCDFEB5B6632B99094 /* Pods-OptimoveReactNativeExample.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -179,15 +182,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "OptimoveReactNativeExample" */;
 			buildPhases = (
-				93B5BDE324BC762822F96CFF /* [CP] Check Pods Manifest.lock */,
+				81A29943CBF5D929AA105AF7 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				503326EA293E3C0D0082876B /* Embed Foundation Extensions */,
-				3CB6FE4B05AA44461AFE3156 /* [CP] Embed Pods Frameworks */,
-				39EB4B25C16E9B1EF6D5E6BC /* [CP] Copy Pods Resources */,
+				74E3488F1DF71E8F14C9C19E /* [CP] Embed Pods Frameworks */,
+				346D449AE6586958640EBD41 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -203,11 +206,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 503326E7293E3C0D0082876B /* Build configuration list for PBXNativeTarget "NotificationServiceExtension" */;
 			buildPhases = (
-				D20502CB9924DF39D46336F4 /* [CP] Check Pods Manifest.lock */,
+				95B0C8646A2AA791D7090372 /* [CP] Check Pods Manifest.lock */,
 				503326DB293E3C0C0082876B /* Sources */,
 				503326DC293E3C0C0082876B /* Frameworks */,
 				503326DD293E3C0C0082876B /* Resources */,
-				319B9018C7876C5B231C3CA4 /* [CP] Copy Pods Resources */,
+				F0C3F5BC82829D3CC8CDA16E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -291,24 +294,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		319B9018C7876C5B231C3CA4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NotificationServiceExtension/Pods-NotificationServiceExtension-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NotificationServiceExtension/Pods-NotificationServiceExtension-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NotificationServiceExtension/Pods-NotificationServiceExtension-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		39EB4B25C16E9B1EF6D5E6BC /* [CP] Copy Pods Resources */ = {
+		346D449AE6586958640EBD41 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -325,7 +311,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OptimoveReactNativeExample/Pods-OptimoveReactNativeExample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3CB6FE4B05AA44461AFE3156 /* [CP] Embed Pods Frameworks */ = {
+		74E3488F1DF71E8F14C9C19E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -342,7 +328,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OptimoveReactNativeExample/Pods-OptimoveReactNativeExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		93B5BDE324BC762822F96CFF /* [CP] Check Pods Manifest.lock */ = {
+		81A29943CBF5D929AA105AF7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -364,7 +350,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D20502CB9924DF39D46336F4 /* [CP] Check Pods Manifest.lock */ = {
+		95B0C8646A2AA791D7090372 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -384,6 +370,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F0C3F5BC82829D3CC8CDA16E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NotificationServiceExtension/Pods-NotificationServiceExtension-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NotificationServiceExtension/Pods-NotificationServiceExtension-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NotificationServiceExtension/Pods-NotificationServiceExtension-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -412,6 +415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F58F22C72F6341010001D6F1 /* SdkInfoModule.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -438,7 +442,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE472B03CC84229AF997CA8E /* Pods-OptimoveReactNativeExample.debug.xcconfig */;
+			baseConfigurationReference = 048572BCEA517E8B2A4C09A1 /* Pods-OptimoveReactNativeExample.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -468,7 +472,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B9E5F0F35F54D8FF53E76D64 /* Pods-OptimoveReactNativeExample.release.xcconfig */;
+			baseConfigurationReference = 14CBFEDCDFEB5B6632B99094 /* Pods-OptimoveReactNativeExample.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -496,7 +500,7 @@
 		};
 		503326E8293E3C0D0082876B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BF4EC9CB7275D5CB9A30D8B7 /* Pods-NotificationServiceExtension.debug.xcconfig */;
+			baseConfigurationReference = 97BF4A40B14DE68C0D2474B1 /* Pods-NotificationServiceExtension.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -505,6 +509,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = NotificationServiceExtension/NotificationServiceExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -592,6 +597,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.optimove.reactnative.example.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -603,7 +609,7 @@
 		};
 		503326E9293E3C0D0082876B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 34F1893E0F047DDC92EDB97B /* Pods-NotificationServiceExtension.release.xcconfig */;
+			baseConfigurationReference = 9A3C8D166C4BB5A949A3A274 /* Pods-NotificationServiceExtension.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -612,6 +618,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = NotificationServiceExtension/NotificationServiceExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 5;
@@ -699,6 +706,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.optimove.reactnative.example.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -16,18 +16,21 @@ public class OptimoveReactNativeConfig {
   private final boolean deeplinkEnabled;
   @Nullable
   private final OptimoveConfig.InAppConsentStrategy inAppConsentStrategy;
-
   @DrawableRes
   @Nullable
   private final Integer notificationSmallIconDrawableId;
+  @Nullable
+  private final String embeddedMessagingCredentials;
 
   private OptimoveReactNativeConfig(@NonNull String optimoveCredentials, @NonNull String optimobileCredentials, boolean deeplinkEnabled,
-                                    @Nullable OptimoveConfig.InAppConsentStrategy inAppConsentStrategy, @Nullable @DrawableRes Integer notificationSmallIconDrawableId) {
+                                    @Nullable OptimoveConfig.InAppConsentStrategy inAppConsentStrategy, @Nullable @DrawableRes Integer notificationSmallIconDrawableId,
+                                    @Nullable String embeddedMessagingCredentials) {
     this.optimoveCredentials = optimoveCredentials;
     this.optimobileCredentials = optimobileCredentials;
     this.deeplinkEnabled = deeplinkEnabled;
     this.inAppConsentStrategy = inAppConsentStrategy;
     this.notificationSmallIconDrawableId = notificationSmallIconDrawableId;
+    this.embeddedMessagingCredentials = embeddedMessagingCredentials;
   }
 
   public static OptimoveCredentialsStep newInstance() {
@@ -47,6 +50,7 @@ public class OptimoveReactNativeConfig {
   public boolean getDeeplinkEnabled() {
     return deeplinkEnabled;
   }
+
   public Integer getNotificationSmallIconDrawableId() {
     return notificationSmallIconDrawableId;
   }
@@ -54,6 +58,11 @@ public class OptimoveReactNativeConfig {
   @Nullable
   public OptimoveConfig.InAppConsentStrategy getInAppConsentStrategy() {
     return inAppConsentStrategy;
+  }
+
+  @Nullable
+  public String getEmbeddedMessagingCredentials() {
+    return embeddedMessagingCredentials;
   }
 
   public interface OptimoveCredentialsStep {
@@ -65,29 +74,27 @@ public class OptimoveReactNativeConfig {
   }
 
   public interface DeeplinkEnabledStep {
-    InAppConsentStrategyStep deeplinkEnabled(boolean deeplinkEnabled);
-  }
-
-  public interface InAppConsentStrategyStep {
-    FinalStep enableInAppWithConsentStrategy(OptimoveConfig.InAppConsentStrategy inAppConsentStrategy);
-    OptimoveReactNativeConfig build();
+    FinalStep deeplinkEnabled(boolean deeplinkEnabled);
   }
 
   public interface FinalStep {
+    FinalStep enableInAppWithConsentStrategy(OptimoveConfig.InAppConsentStrategy inAppConsentStrategy);
+    FinalStep enableEmbeddedMessaging(@NonNull String embeddedMessagingCredentials);
     FinalStep setPushSmallIconId(@DrawableRes Integer drawableIconId);
     OptimoveReactNativeConfig build();
   }
 
-  private static final class Builder implements OptimoveCredentialsStep, OptimobileCredentialsStep, DeeplinkEnabledStep, InAppConsentStrategyStep, FinalStep {
+  private static final class Builder implements OptimoveCredentialsStep, OptimobileCredentialsStep, DeeplinkEnabledStep, FinalStep {
     private String optimoveCredentials;
     private String optimobileCredentials;
     private boolean deeplinkEnabled;
     @DrawableRes
     @Nullable
     private Integer notificationSmallIconDrawableId;
-
     @Nullable
     private OptimoveConfig.InAppConsentStrategy inAppConsentStrategy;
+    @Nullable
+    private String embeddedMessagingCredentials;
 
     public OptimobileCredentialsStep optimoveCredentials(String optimoveCredentials) {
       this.optimoveCredentials = optimoveCredentials;
@@ -99,7 +106,7 @@ public class OptimoveReactNativeConfig {
       return this;
     }
 
-    public InAppConsentStrategyStep deeplinkEnabled(boolean deeplinkEnabled) {
+    public FinalStep deeplinkEnabled(boolean deeplinkEnabled) {
       this.deeplinkEnabled = deeplinkEnabled;
       return this;
     }
@@ -109,13 +116,18 @@ public class OptimoveReactNativeConfig {
       return this;
     }
 
+    public FinalStep enableEmbeddedMessaging(@NonNull String embeddedMessagingCredentials) {
+      this.embeddedMessagingCredentials = embeddedMessagingCredentials;
+      return this;
+    }
+
     public FinalStep setPushSmallIconId(@DrawableRes Integer drawableIconId) {
       this.notificationSmallIconDrawableId = drawableIconId;
       return this;
     }
 
     public OptimoveReactNativeConfig build() {
-      return new OptimoveReactNativeConfig(optimoveCredentials, optimobileCredentials, deeplinkEnabled, inAppConsentStrategy, notificationSmallIconDrawableId);
+      return new OptimoveReactNativeConfig(optimoveCredentials, optimobileCredentials, deeplinkEnabled, inAppConsentStrategy, notificationSmallIconDrawableId, embeddedMessagingCredentials);
     }
   }
 }

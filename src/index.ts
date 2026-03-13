@@ -1,4 +1,9 @@
 import type {
+  Container,
+  ContainerRequestOptions,
+  EmbeddedMessage,
+} from './embeddedMessaging';
+import type {
   DeepLinkHandler,
   InAppDeepLinkHandler,
   InAppInboxUpdatedHandler,
@@ -37,6 +42,12 @@ export type {
   NonMatchedResolution,
   MatchedResolution,
 } from './ddl';
+
+export type {
+  EmbeddedMessage,
+  Container,
+  ContainerRequestOptions,
+} from './embeddedMessaging';
 
 const optimoveEmitter = new NativeEventEmitter(
   OptimoveReactNative as unknown as NativeModule
@@ -119,6 +130,33 @@ export default class Optimove {
 
   static inAppGetInboxSummary(): Promise<InAppInboxSummary> {
     return OptimoveReactNative.inAppGetInboxSummary();
+  }
+
+  static embeddedMessagingGetMessages(
+    containers: ContainerRequestOptions[]
+  ): Promise<Record<string, Container>> {
+    return OptimoveReactNative.embeddedMessagingGetMessages(
+      containers
+    ) as Promise<Record<string, Container>>;
+  }
+
+  static embeddedMessagingDeleteMessage(
+    message: EmbeddedMessage
+  ): Promise<void> {
+    return OptimoveReactNative.embeddedMessagingDeleteMessage(message);
+  }
+
+  static embeddedMessagingReportClickMetric(
+    message: EmbeddedMessage
+  ): Promise<void> {
+    return OptimoveReactNative.embeddedMessagingReportClickMetric(message);
+  }
+
+  static embeddedMessagingSetAsRead(
+    message: EmbeddedMessage,
+    isRead: boolean
+  ): Promise<void> {
+    return OptimoveReactNative.embeddedMessagingSetAsRead(message, isRead);
   }
 
   static setPushReceivedHandler(pushReceivedHandler: PushNotificationHandler) {

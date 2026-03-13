@@ -8,7 +8,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
-  [OptimoveInitializer initialize:@"<YOUR OPTIMOVE CREDENTIALS>" optimobileCredentials:@"<YOUR OPTIMOBILE CREDENTIALS>" inAppConsentStrategy:@"auto-enroll|in-app-disabled|explicit-by-user" enableDeferredDeepLinking:true];
+  [OptimoveInitializer initialize:@"<YOUR OPTIMOVE CREDENTIALS>" optimobileCredentials:@"<YOUR OPTIMOBILE CREDENTIALS>" inAppConsentStrategy:@"auto-enroll|in-app-disabled|explicit-by-user" enableDeferredDeepLinking:true embeddedMessagingCredentials:nil];
 
   self.moduleName = @"OptimoveReactNativeExample";
   // You can add your custom initial props in the dictionary below.
