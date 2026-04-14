@@ -67,7 +67,6 @@ repositories {
 dependencies {
   implementation "com.facebook.react:react-android"
   api 'com.optimove.android:optimove-android:7.13.0'
-  api 'com.optimove.android:gamify-widget-sdk:7.13.0'
 }
 
 react {
