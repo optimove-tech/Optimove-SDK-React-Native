@@ -132,6 +132,18 @@ export default class Optimove {
     return OptimoveReactNative.inAppGetInboxSummary();
   }
 
+  static gamifyWidgetOpen(
+    widgetUrl: string,
+    userId?: string,
+    token?: string
+  ): void {
+    OptimoveReactNative.gamifyWidgetOpen(
+      widgetUrl,
+      userId ?? null,
+      token ?? null
+    );
+  }
+
   static embeddedMessagingGetMessages(
     containers: ContainerRequestOptions[]
   ): Promise<Record<string, Container>> {
