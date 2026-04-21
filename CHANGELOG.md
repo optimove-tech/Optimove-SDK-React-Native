@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.1.2
+
+- Android: updated Optimove Android SDK to `7.13.0`.
+
 ## 3.1.1
 
 - Android: updated Optimove Android SDK to `7.12.3`.
