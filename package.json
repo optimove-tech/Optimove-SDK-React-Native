@@ -21,6 +21,7 @@
     "*.podspec",
     "react-native.config.js",
     "!ios/build",
+    "!ios/**/xcuserdata",
     "!android/build",
     "!android/gradle",
     "!android/gradlew",
@@ -37,7 +38,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "prepare": "bob build",
     "release": "release-it --only-version",
-    "format": "./node_modules/.bin/prettier --write \"**/*.{ts,tsx}\"",
+    "format": "prettier --write \"**/*.{ts,tsx}\"",
     "example": "yarn --cwd example",
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
     "bootstrap": "yarn example && yarn install && yarn example pods",
@@ -48,13 +49,16 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/optimove-tech/Optimove-SDK-React-Native/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/optimove-tech/Optimove-SDK-React-Native.git"
+  },
   "author": "Optimove <konstantin_a@optimove.com> (https://www.optimove.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/optimove-tech/Optimove-SDK-React-Native//issues"
+    "url": "https://github.com/optimove-tech/Optimove-SDK-React-Native/issues"
   },
-  "homepage": "https://github.com/optimove-tech/Optimove-SDK-React-Native/#readme",
+  "homepage": "https://github.com/optimove-tech/Optimove-SDK-React-Native#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
