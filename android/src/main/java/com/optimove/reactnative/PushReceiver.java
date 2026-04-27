@@ -18,6 +18,9 @@ public class PushReceiver extends PushBroadcastReceiver {
   @Override
   protected void onPushReceived(Context context, PushMessage pushMessage) {
     super.onPushReceived(context, pushMessage);
+    if (pushMessage.getData() != null && pushMessage.getData().has("k.message")) {
+      return;
+  }
     OptimoveReactNativeEmitter.getInstance().emit(new PushReceivedEvent(pushMessage));
   }
 
