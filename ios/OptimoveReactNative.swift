@@ -327,8 +327,11 @@ class OptimoveReactNative: RCTEventEmitter {
 
     @objc
     func gamifyWidgetOpen(_ widgetUrl: String, userId: String?, token: String?) {
-        // Gamify Widget SDK is not yet available on iOS.
-        print("[Optimove] gamifyWidgetOpen is not supported on iOS yet.")
+        DispatchQueue.main.async {
+            guard let vc = RCTPresentedViewController() else { return }
+            GamifyWidgetSDK.initialize(widgetUrl: widgetUrl)
+            GamifyWidgetSDK.open(from: vc, userId: userId, token: token)
+        }
     }
 
     @objc
