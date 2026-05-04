@@ -16,12 +16,15 @@ import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.module.annotations.ReactModule;
 import com.optimove.android.Optimove;
+import com.optimove.android.gamifywidgetsdk.GamifyWidgetSDK;
 import com.optimove.android.embeddedmessaging.Container;
 import com.optimove.android.embeddedmessaging.ContainerRequestOptions;
 import com.optimove.android.embeddedmessaging.EmbeddedMessage;
 import com.optimove.android.embeddedmessaging.OptimoveEmbeddedMessaging;
 import com.optimove.android.optimobile.InAppInboxItem;
 import com.optimove.android.optimobile.OptimoveInApp;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -260,6 +263,19 @@ public class OptimoveReactNativeModule extends NativeOptimoveReactNativeSpec {
       mapped.putInt("unreadCount", summary.getUnreadCount());
 
       promise.resolve(mapped);
+    });
+  }
+
+  @Override
+  public void gamifyWidgetOpen(String widgetUrl, @Nullable String userId, @Nullable String token) {
+    ReactApplicationContext ctx = getReactApplicationContext();
+    ctx.runOnUiQueueThread(() -> {
+      android.app.Activity activity = getCurrentActivity();
+      if (!(activity instanceof FragmentActivity)) {
+        return;
+      }
+      FragmentManager fm = ((FragmentActivity) activity).getSupportFragmentManager();
+      GamifyWidgetSDK.open(fm, widgetUrl, userId, token);
     });
   }
 
