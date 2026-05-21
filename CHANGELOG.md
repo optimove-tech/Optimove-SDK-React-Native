@@ -2,7 +2,7 @@
 
 ## 3.1.3
 
-- Android: updated Optimove Android SDK to `7.13.1`
+- Android: updated Optimove Android SDK to `7.13.1`. This Android version reverts in-app deep-link handler storage to pre-7.8.1 behaviour: a direct strong reference on `OptimoveInApp`, with `setDeepLinkHandler(null)` to clear. Removes wrappers `LifecycleBoundDeepLinkHandler` and `WeakDeepLinkHandler`.
 
 ## 3.1.2
 
