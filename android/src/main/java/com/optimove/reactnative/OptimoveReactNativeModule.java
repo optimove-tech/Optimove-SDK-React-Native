@@ -275,7 +275,8 @@ public class OptimoveReactNativeModule extends NativeOptimoveReactNativeSpec {
         return;
       }
       FragmentManager fm = ((FragmentActivity) activity).getSupportFragmentManager();
-      GamifyWidgetSDK.open(fm, widgetUrl, userId, token);
+      GamifyWidgetSDK.init(widgetUrl);
+      GamifyWidgetSDK.open(fm, userId, token);
     });
   }
 
