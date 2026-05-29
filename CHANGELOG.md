@@ -2,9 +2,9 @@
 
 ## 3.2.0
 
-- Added `Optimove.gamifyWidgetOpen(widgetUrl, userId?, token?)` API to open the Gamify Widget bottom sheet.
+- Added `Optimove.gamifyWidgetOpen(widgetUrl, userId?, token?)` API to open the Gamify Widget.
 - Android: updated Optimove Android SDK to `7.14.0`.
-- iOS: Gamify Widget support requires upcoming iOS SDK release (podspec bump tracked separately).
+- iOS: TBD
 
 ## 3.1.3
 
