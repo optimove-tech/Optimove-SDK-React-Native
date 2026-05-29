@@ -179,6 +179,13 @@ export function HomeScreen({ navigation }: { navigation: any }) {
           <Separator />
           <TouchableOpacity
             style={styles.button}
+            onPress={() => navigation.navigate('GamifyWidget')}
+          >
+            <Text style={styles.buttonText}>Gamify Widget</Text>
+          </TouchableOpacity>
+          <Separator />
+          <TouchableOpacity
+            style={styles.button}
             onPress={() => Optimove.inAppUpdateConsent(true)}
           >
             <Text style={styles.buttonText}>Opt in</Text>

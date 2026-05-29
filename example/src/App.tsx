@@ -1,6 +1,7 @@
 import { Alert, NativeModules, Platform } from 'react-native';
 
 import { EmbeddedMessagingScreen } from './EmbeddedMessagingScreen';
+import { GamifyWidgetScreen } from './GamifyWidgetScreen';
 import { HomeScreen } from './HomeScreen';
 import { InboxScreen } from './InboxScreen';
 import { NavigationContainer } from '@react-navigation/native';
@@ -53,6 +54,20 @@ function App() {
           component={EmbeddedMessagingScreen}
           options={{
             title: 'Embedded Messaging',
+            headerStyle: {
+              backgroundColor: '#FF8566',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="GamifyWidget"
+          component={GamifyWidgetScreen}
+          options={{
+            title: 'Gamify Widget',
             headerStyle: {
               backgroundColor: '#FF8566',
             },

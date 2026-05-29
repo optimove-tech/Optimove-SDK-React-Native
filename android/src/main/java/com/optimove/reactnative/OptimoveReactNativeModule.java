@@ -23,8 +23,6 @@ import com.optimove.android.embeddedmessaging.EmbeddedMessage;
 import com.optimove.android.embeddedmessaging.OptimoveEmbeddedMessaging;
 import com.optimove.android.optimobile.InAppInboxItem;
 import com.optimove.android.optimobile.OptimoveInApp;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -271,12 +269,11 @@ public class OptimoveReactNativeModule extends NativeOptimoveReactNativeSpec {
     ReactApplicationContext ctx = getReactApplicationContext();
     ctx.runOnUiQueueThread(() -> {
       android.app.Activity activity = getCurrentActivity();
-      if (!(activity instanceof FragmentActivity)) {
+      if (activity == null) {
         return;
       }
-      FragmentManager fm = ((FragmentActivity) activity).getSupportFragmentManager();
-      GamifyWidgetSDK.init(widgetUrl);
-      GamifyWidgetSDK.open(fm, userId, token);
+      GamifyWidgetSDK.initialize(widgetUrl);
+      GamifyWidgetSDK.getInstance().open(activity, userId, token);
     });
   }
 
