@@ -70,6 +70,13 @@ function App() {
 function initListeners() {
   Optimove.setPushReceivedHandler((notification) => {
     console.debug('Push received');
+
+    // Skip debug alert for in-app message pushes (they have k.message in data)
+    if (notification.data && 'k.message' in notification.data) {
+      console.debug('In-app message push received, skipping debug alert');
+      return;
+    }
+
     Alert.alert(
       `Recevied push\n\n${notification.title}`,
       `${notification.message}\n\nData:\n${JSON.stringify(notification.data)}`,
