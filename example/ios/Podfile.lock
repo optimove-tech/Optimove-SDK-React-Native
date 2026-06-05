@@ -8,12 +8,12 @@ PODS:
   - hermes-engine (0.76.9):
     - hermes-engine/Pre-built (= 0.76.9)
   - hermes-engine/Pre-built (0.76.9)
-  - optimove-react-native (3.1.0):
+  - optimove-react-native (3.2.0):
     - DoubleConversion
     - glog
     - hermes-engine
-    - OptimoveCore (~> 6.4.1)
-    - OptimoveSDK (~> 6.4.1)
+    - OptimoveCore (~> 6.7.0)
+    - OptimoveSDK (~> 6.7.0)
     - RCT-Folly (= 2024.10.14.00)
     - RCTRequired
     - RCTTypeSafety
@@ -31,10 +31,10 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - OptimoveCore (6.4.1)
-  - OptimoveNotificationServiceExtension (6.4.1)
-  - OptimoveSDK (6.4.1):
-    - OptimoveCore (= 6.4.1)
+  - OptimoveCore (6.7.0)
+  - OptimoveNotificationServiceExtension (6.7.0)
+  - OptimoveSDK (6.7.0):
+    - OptimoveCore (= 6.7.0)
   - RCT-Folly (2024.10.14.00):
     - boost
     - DoubleConversion
@@ -1313,7 +1313,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-pager-view (6.8.1):
+  - react-native-pager-view (6.9.1):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1672,7 +1672,7 @@ PODS:
     - React-logger
     - React-perflogger
     - React-utils (= 0.76.9)
-  - RNGestureHandler (2.27.1):
+  - RNGestureHandler (2.28.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1694,7 +1694,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNReanimated (3.18.0):
+  - RNReanimated (3.19.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1716,10 +1716,10 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - RNReanimated/reanimated (= 3.18.0)
-    - RNReanimated/worklets (= 3.18.0)
+    - RNReanimated/reanimated (= 3.19.0)
+    - RNReanimated/worklets (= 3.19.0)
     - Yoga
-  - RNReanimated/reanimated (3.18.0):
+  - RNReanimated/reanimated (3.19.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1741,56 +1741,9 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - RNReanimated/reanimated/apple (= 3.18.0)
+    - RNReanimated/reanimated/apple (= 3.19.0)
     - Yoga
-  - RNReanimated/reanimated/apple (3.18.0):
-    - DoubleConversion
-    - glog
-    - hermes-engine
-    - RCT-Folly (= 2024.10.14.00)
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Core
-    - React-debug
-    - React-Fabric
-    - React-featureflags
-    - React-graphics
-    - React-hermes
-    - React-ImageManager
-    - React-jsi
-    - React-NativeModulesApple
-    - React-RCTFabric
-    - React-rendererdebug
-    - React-utils
-    - ReactCodegen
-    - ReactCommon/turbomodule/bridging
-    - ReactCommon/turbomodule/core
-    - Yoga
-  - RNReanimated/worklets (3.18.0):
-    - DoubleConversion
-    - glog
-    - hermes-engine
-    - RCT-Folly (= 2024.10.14.00)
-    - RCTRequired
-    - RCTTypeSafety
-    - React-Core
-    - React-debug
-    - React-Fabric
-    - React-featureflags
-    - React-graphics
-    - React-hermes
-    - React-ImageManager
-    - React-jsi
-    - React-NativeModulesApple
-    - React-RCTFabric
-    - React-rendererdebug
-    - React-utils
-    - ReactCodegen
-    - ReactCommon/turbomodule/bridging
-    - ReactCommon/turbomodule/core
-    - RNReanimated/worklets/apple (= 3.18.0)
-    - Yoga
-  - RNReanimated/worklets/apple (3.18.0):
+  - RNReanimated/reanimated/apple (3.19.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1813,7 +1766,54 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (4.12.0):
+  - RNReanimated/worklets (3.19.0):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.10.14.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-hermes
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - RNReanimated/worklets/apple (= 3.19.0)
+    - Yoga
+  - RNReanimated/worklets/apple (3.19.0):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.10.14.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-hermes
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
+  - RNScreens (4.13.1):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1834,9 +1834,9 @@ PODS:
     - ReactCodegen
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
-    - RNScreens/common (= 4.12.0)
+    - RNScreens/common (= 4.13.1)
     - Yoga
-  - RNScreens/common (4.12.0):
+  - RNScreens/common (4.13.1):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1870,7 +1870,7 @@ DEPENDENCIES:
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
   - optimove-react-native (from `../..`)
-  - OptimoveNotificationServiceExtension (~> 6.4.1)
+  - OptimoveNotificationServiceExtension (~> 6.7.0)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCT-Folly/Fabric (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTDeprecation (from `../node_modules/react-native/ReactApple/Libraries/RCTFoundation/RCTDeprecation`)
@@ -2094,10 +2094,10 @@ SPEC CHECKSUMS:
   fmt: 01b82d4ca6470831d1cc0852a1af644be019e8f6
   glog: 08b301085f15bcbb6ff8632a8ebaf239aae04e6a
   hermes-engine: 9e868dc7be781364296d6ee2f56d0c1a9ef0bb11
-  optimove-react-native: 361f48c50192644bd14994dd7a9658ffe24fa515
-  OptimoveCore: 8f9b76da066ddf8c2f9c5a6b62f7d9e1a1a3b74a
-  OptimoveNotificationServiceExtension: d162df1d1a0d4351e0deaa60f9f22650e7395d91
-  OptimoveSDK: 28c70f8ac8e4972dcff990485bdaa63c2db294fd
+  optimove-react-native: e056a5d8eb90e4d42693a43c7ae40d8a4c8175f7
+  OptimoveCore: 36cde1c2f281eaa1f7f076f9985734cbd216dc62
+  OptimoveNotificationServiceExtension: fdf2559a173ee7628425c3d509c5dab7b657123d
+  OptimoveSDK: ad669c18d3a3c36b8bc7d63827b96a38040dcf16
   RCT-Folly: 7b4f73a92ad9571b9dbdb05bb30fad927fa971e1
   RCTDeprecation: ebe712bb05077934b16c6bf25228bdec34b64f83
   RCTRequired: ca91e5dd26b64f577b528044c962baf171c6b716
@@ -2127,7 +2127,7 @@ SPEC CHECKSUMS:
   React-logger: dbca7bdfd4aa5ef69431362bde6b36d49403cb20
   React-Mapbuffer: 129fa9634f42d88a0c3761d2829db85175b985ee
   React-microtasksnativemodule: b5151a6d754fbf52292e758c4bb93b7c0d2f0b92
-  react-native-pager-view: 2bb68597caddbcab63664e7068027272fec0daac
+  react-native-pager-view: 913caecc365a7d5e9e65345fd64fd853de2e0227
   react-native-safe-area-context: 276e89d3c4f33b07a982e97638d2f67590010af3
   React-nativeconfig: 415626a63057638759bcc75e0a96e2e07771a479
   React-NativeModulesApple: bffc60f55895c2723b1e5472fa40567fe3df4923
@@ -2156,12 +2156,12 @@ SPEC CHECKSUMS:
   React-utils: 52cb73e127a39fc2d9f02f503b2a7b3b0abd23dd
   ReactCodegen: 31fcff227d0035956575be0c013a2edcc687a53c
   ReactCommon: 78c49c7cf7df16983ebc3c646b4f47398437f2ec
-  RNGestureHandler: cf9bafa43445416c1ce647f78de19c8ff63bc182
-  RNReanimated: 170d2f7655729d981001a9822efd545640bfb858
-  RNScreens: 1209becb8438a89b6e73162d7dcbe9842231aea0
+  RNGestureHandler: 77d8346a6a4e00617928cc8d0c0259fd03c1bf6a
+  RNReanimated: 56b6a2109020a02f908c8743d1108da85a450186
+  RNScreens: 76426ee25dbbefe9acee9f64bd9c22d2a5e3d68d
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
-  Yoga: 1259c7a8cbaccf7b4c3ddf8ee36ca11be9dee407
+  Yoga: 8a9b4a239337975815ff5f0430a9cbd5957d00fd
 
-PODFILE CHECKSUM: 9dbe32a3658b8d82a2e08104af2928c5e81327dc
+PODFILE CHECKSUM: e66cee1738ccc63ec89b642f61e48ffab73bcc08
 
-COCOAPODS: 1.16.2
+COCOAPODS: 1.14.2

@@ -24,6 +24,12 @@ export interface Spec extends TurboModule {
   inAppMarkAllInboxItemsAsRead(): Promise<boolean>;
   inAppGetInboxSummary(): Promise<InAppInboxSummary>;
 
+  gamifyWidgetOpen(
+    widgetUrl: string,
+    userId: string | null,
+    token: string | null
+  ): void;
+
   embeddedMessagingGetMessages(containers: Object[]): Promise<Object>;
   embeddedMessagingDeleteMessage(message: Object): Promise<void>;
   embeddedMessagingReportClickMetric(message: Object): Promise<void>;

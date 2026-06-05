@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.2.0
+
+- Added `Optimove.gamifyWidgetOpen(widgetUrl, userId?, token?)` API to open the Gamify Widget.
+- Android: updated Optimove Android SDK to `7.14.0`.
+- iOS: updated Optimove iOS SDK to `6.7.0`.
+
 ## 3.1.3
 
 - Android: updated Optimove Android SDK to `7.13.1`. This Android version reverts in-app deep-link handler storage to pre-7.8.1 behaviour: a direct strong reference on `OptimoveInApp`, with `setDeepLinkHandler(null)` to clear. Removes wrappers `LifecycleBoundDeepLinkHandler` and `WeakDeepLinkHandler`.

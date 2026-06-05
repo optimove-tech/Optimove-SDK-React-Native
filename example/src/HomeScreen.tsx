@@ -191,6 +191,15 @@ export function HomeScreen({ navigation }: { navigation: any }) {
             <Text style={styles.buttonText}>Opt out</Text>
           </TouchableOpacity>
         </View>
+        <Separator />
+        <View style={styles.container}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate('GamifyWidget')}
+          >
+            <Text style={styles.buttonText}>Gamify Widget</Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

@@ -326,6 +326,15 @@ class OptimoveReactNative: RCTEventEmitter {
     }
 
     @objc
+    func gamifyWidgetOpen(_ widgetUrl: String, userId: String?, token: String?) {
+        DispatchQueue.main.async {
+            guard let vc = RCTPresentedViewController() else { return }
+            GamifyWidgetSDK.initialize(widgetUrl: widgetUrl)
+            GamifyWidgetSDK.open(from: vc, userId: userId, token: token)
+        }
+    }
+
+    @objc
     func inAppGetInboxSummary(_ resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
         OptimoveInApp.getInboxSummaryAsync(inboxSummaryBlock: { inAppInboxSummary in
             var inAppInboxSummaryMap = [String: Any?]()

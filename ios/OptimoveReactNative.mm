@@ -53,6 +53,8 @@ RCT_EXTERN_METHOD(inAppMarkAllInboxItemsAsRead:(RCTPromiseResolveBlock)resolve r
 
 RCT_EXTERN_METHOD(inAppGetInboxSummary:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 
+RCT_EXTERN_METHOD(gamifyWidgetOpen:(NSString*)widgetUrl userId:(NSString * _Nullable)userId token:(NSString * _Nullable)token)
+
 RCT_EXTERN_METHOD(embeddedMessagingGetMessages:(NSArray*)containers resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 
 RCT_EXTERN_METHOD(embeddedMessagingDeleteMessage:(NSDictionary*)message resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)

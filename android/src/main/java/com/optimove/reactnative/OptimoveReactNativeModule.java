@@ -16,6 +16,7 @@ import com.facebook.react.bridge.WritableNativeArray;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.module.annotations.ReactModule;
 import com.optimove.android.Optimove;
+import com.optimove.android.gamifywidgetsdk.GamifyWidgetSDK;
 import com.optimove.android.embeddedmessaging.Container;
 import com.optimove.android.embeddedmessaging.ContainerRequestOptions;
 import com.optimove.android.embeddedmessaging.EmbeddedMessage;
@@ -260,6 +261,19 @@ public class OptimoveReactNativeModule extends NativeOptimoveReactNativeSpec {
       mapped.putInt("unreadCount", summary.getUnreadCount());
 
       promise.resolve(mapped);
+    });
+  }
+
+  @Override
+  public void gamifyWidgetOpen(String widgetUrl, @Nullable String userId, @Nullable String token) {
+    ReactApplicationContext ctx = getReactApplicationContext();
+    ctx.runOnUiQueueThread(() -> {
+      android.app.Activity activity = getCurrentActivity();
+      if (activity == null) {
+        return;
+      }
+      GamifyWidgetSDK.initialize(widgetUrl);
+      GamifyWidgetSDK.getInstance().open(activity, userId, token);
     });
   }
 
